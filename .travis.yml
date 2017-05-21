@@ -1,0 +1,7 @@
+deploy:
+  provider: heroku
+  api_key:
+    secure: PAJZiVhr1KBuzwrvOpEVqWYmdw9q46MLCHocNf89KSTr5YNkQQ4NiMQ47xtRgthm7OH9jx4jsrPxZeIpaXmigTul5T+C/JCCW1rcqOF1lKS/xXq+64C3ISOE6tLjgvcwognekK3j+vC+fKhUoOb3dvirBduw+UhFbTC31aWYGvZqpBDHuYpc00UFWVO5jc2/+AZp81RZHp7wuxCXnKZQA1G/04/I4jIe8ToqjEDLqDjEUhdv+OJbtitgJsRjOeEAJa7UfgoWDsn/MzzveB6Y+n+B62rD/h/PSmrN3WJo1zCeT97eTw/kaRZqfw6DoaAmOIUWh/lST6P9IKQ/XbbWu3FCzJgJfKjGkXFw+zGvEKqn2KoGRiFEKgVW/95sPyVTeMvBg22YaCgVSlN+JclUPs+tq7XiiYMGpDkDJCQbkoiwuoVXk1L4J0sGBnjwXdITWcuXF99vEW3xaBE7upS+sXqwyBAOiLLZcn+glgtOCSxa1+K+iFkoH+9UuTWF4k+bYcISAFqEX+LKbSxjZ0kBn01RBL7X2s35comy/0JMCqhN+vvPNlWnUZtQJAuz8kGiWwLbnG/tFZ6DDBqjFjWbsAeNjocL2CN1m7dMMdHyZyLyYzKGjTvF85SAZ/2LuAiAQX2589cazC28uML8ExlOxccFmydNvb0tnOGKMkvgtIM=
+  app: calm-chamber-45712
+  on:
+    repo: Ljyockey/hospitalert
