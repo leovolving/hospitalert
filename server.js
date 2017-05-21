@@ -1,8 +1,9 @@
 var express = require('express');
 var app = express();
+var PORT = require('./config');
 
 app.use(express.static('public'));
 
-app.listen(process.env.PORT || 8080);
+app.listen(PORT);
 
 exports.app = app;
