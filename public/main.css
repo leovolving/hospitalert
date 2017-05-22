@@ -1,0 +1,27 @@
+nav li {
+	display: inline;
+	list-style-type: none;
+}
+
+nav a {
+	color: #00b1bd;
+}
+
+.landing {
+	background: url("img/surgery-landing.jpeg");
+	background-size: cover;
+	height: 800px;
+}
+
+.visuallyhidden { 
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px; 
+}
+
+
