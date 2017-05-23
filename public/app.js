@@ -123,7 +123,7 @@ function createHospitalization() {
 var editTemplate = '<td><input type="text" name="edit"><button type="submit" class="change-status">Submit</button></td>';
 
 function editStatus() {
-  $('.js-hospitalizations').on('click', '.edit', function(e) {
+  $('.js-hospitalizations-table').on('click', '.edit', function(e) {
     e.preventDefault();
     var parent = $(this).parent();
     parent.empty();
@@ -147,7 +147,7 @@ function changeStatus() {
 }
 
 function answerClick() {
-  $('.js-questions').on('click', '.answer-button', function(e) {
+  $('.js-questions-table').on('click', '.answer-button', function(e) {
     e.preventDefault();
     var parent = $(this).parent().siblings('.answer');
     // debugger;
