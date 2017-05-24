@@ -4,6 +4,7 @@
 	<meta name="viewport" content="width=device-width">
 	<title>Dashboard | HospitAlert</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <nav>
@@ -23,31 +24,33 @@
 	
 <section class="hospitalizations"> 
 	<h2>Hospitalizations</h2>
-	<div class="hospitalizations js-hospitalizations" id="current"></div>
-	<table class="hospitalizations js-hospitalizations-table">
-		<tr class="hospitalizations-headings">
-      <th>ID</th>
-			<th>Patient</th>
-			<th>Condition/Incident</th>
-			<th>Conscious</th>
-			<th>Latest Status</th>
-			<th>Edit Status</th>
-		</tr>
+	<table class="hospitalizations js-hospitalizations-table table table-hover table-responsive">
+		<thead>
+			<tr class="hospitalizations-headings">
+				<th>Patient</th>
+				<th>Condition/Incident</th>
+				<th>Conscious</th>
+				<th>Latest Status</th>
+				<th>Edit Status</th>
+			</tr>
+		</thead>
+		<tbody class="js-hospitalizations"></tbody>
 	</table>
 	
 </section>
 
 <section class="questions">
 	<h2>Questions</h2>
-	<div class="questions js-questions"></div>
-	<table class="questions js-questions-table">
-		<tr class="questions-headings">
-			<th>ID</th>
-			<th>Patient</th>
-			<th>Asker</th>
-			<th>Question</th>
-			<th>Answer</th>
-		</tr>
+	<table class="questions js-questions-table table table-hover table-responsive">
+		<thead>
+			<tr class="questions-headings">
+				<th>Patient</th>
+				<th>Asker</th>
+				<th>Question</th>
+				<th>Answer</th>
+			</tr>
+		</thead>
+		<tbody class="js-questions"></tbody>
 	</table>
 	
 </section>
