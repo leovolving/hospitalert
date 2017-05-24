@@ -3,6 +3,10 @@ nav li {
 	list-style-type: none;
 }
 
+nav {
+	margin-top: 20px;
+}
+
 nav a {
 	color: #00b1bd;
 }
@@ -14,9 +18,13 @@ nav a {
     ),
     url("img/surgery-landing.jpeg");
 	background-size: cover;
-	height: 800px;
+	height: 600px;
 	color: white;
 	text-align: center;
+}
+
+.landing a, .landing a:hover, .landing a:focus {
+	color: white;
 }
 
 /*.landing h1, .landing p {
@@ -44,4 +52,12 @@ img {
 	float: left;
 }
 
+.new-hospitalization, .ask-questions {
+	margin-bottom: 50px;
+}
 
+@media only screen and (min-width: 640px) {
+	.landing {
+		height: 800px;
+	}
+}

@@ -2,59 +2,88 @@
 <html>
 <head>
 	<title>HospitAlert</title>
+	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <nav>
 	<ul>
-		<li><a href="#">About</a></li>
-		<li><a href="#">Get Updates</a></li>
-		<li><a href="#">Stay Private</a></li>
-		<li><a href="#">Ask Questions</a></li>
+		<li><a href="#about">About</a> | </li>
+		<li><a href="#updates">Get Updates</a> | </li>
+		<li><a href="#private">Stay Private</a> | </li>
+		<li><a href="#ask-questions">Ask Questions</a> | </li>
 		<li><a href="/dashboard">Demo</a></li>
 	</ul>
+
 </nav>
 
 <header class="landing">
 	<h1>HospitAlert</h1>
 	<p>Stay up-to-date on what matters most. Any time. Anywhere.</p>
+	<p>View the <a href="/dashboard">demo.</a></p>
 </header>
 
 <main>
 
-	<section class="about">
-		<h2>In the Loop</h2>
-		<p>When a loved one is hospitalized, everyone can stay on the same page in one spot.</p>
-		<img class="right" src="img/loop.jpg">
-	</section>
-
-	<section class="updates">
+	<section class="about" id="about">
 		<div class="container">
-		<div class="row">
-			<div class="col-md-12 pull-right">
-				<h2>Get realtime updates</h2>
-				<p>Get updates in realtime from someone on scene</p>
-				<div class="image">
-				<img class="left" src="img/updates.jpg">
-				</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="pull-left">
+						<h2>In the Loop</h2>
+						<p>When a loved one is hospitalized, everyone can stay on the same page in one spot.</p>
+						<img class="right" src="img/loop.jpg">
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="private">
-		<h2>Keep private information private</h2>
-		<p>With HospitAlert, you have the power to choose who gets to see your updates</p>
-		<img class="right" src="img/private.jpg">
+	<section class="updates" id="updates">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="pull-right">
+						<h2>Get realtime updates</h2>
+						<p>Get updates in realtime from someone on scene</p>
+						<div class="image">
+							<img class="left" src="img/updates.jpg">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
-	<section class="ask-questions">
-		<h2>Have questions? Get answers.</h2>
-		<p>Have questions about your loved one but aren't able to make it to the hospital?
-			Post your questions on HospitAlert to get answers.
-		</p>
-		<img class="left" src="img/questions.jpeg">
+	<section class="private" id="private">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="pull-left">
+						<h2>Keep private information private</h2>
+						<p>With HospitAlert, you have the power to choose who gets to see your updates</p>
+						<img class="right" src="img/private.jpg">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ask-questions" id="ask-questions">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="pull-right">
+						<h2>Have questions? Get answers.</h2>
+						<p>Have questions about your loved one but aren't able to make it to the hospital?<br>
+							Post your questions on HospitAlert to get answers.
+						</p>
+						<img class="left" src="img/questions.jpeg">
+					</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<!-- add sticky footer -->

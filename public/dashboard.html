@@ -3,72 +3,105 @@
 <head>
 	<meta name="viewport" content="width=device-width">
 	<title>Dashboard | HospitAlert</title>
-	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
 <nav>
-	<ul>
-		<li><a href="/">HospitAlert</a></li>
-		<li><a href="#">My Hospitalizations</a></li>
-		<li><a href="#">Questions</a></li>
-		<li><a href="#">Create New Hospitalization</a></li>
-	</ul>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul>
+					<li><a href="/">Home</a> | </li>
+					<li><a href="#hospitalizations">My Hospitalizations</a> | </li>
+					<li><a href="#questions">Questions</a> | </li>
+					<li><a href="#create-new">Create New Hospitalization</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </nav>
 
 <header class="dashboard">
-	<h1>Dashboard</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Dashboard</h1>
+				<p>View hositalizations and update the status. Your followers will be notified of updated statuses.</p>
+				<p>View current questions related to the hospitalizations you posted and answer them.</p>
+				<p>Create a new hospitalization entry and update the status.</p>
+			</div>
+		</div>
+	</div>
 </header>
 
 <main>
 	
-<section class="hospitalizations"> 
-	<h2>Hospitalizations</h2>
-	<table class="hospitalizations js-hospitalizations-table table table-hover table-responsive">
-		<thead>
-			<tr class="hospitalizations-headings">
-				<th>Patient</th>
-				<th>Condition/Incident</th>
-				<th>Conscious</th>
-				<th>Latest Status</th>
-				<th>Edit Status</th>
-			</tr>
-		</thead>
-		<tbody class="js-hospitalizations"></tbody>
-	</table>
+<section class="hospitalizations" id="hospitalizations"> 
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Hospitalizations</h2>
+				<table class="hospitalizations js-hospitalizations-table table table-hover table-responsive">
+					<thead>
+						<tr class="hospitalizations-headings">
+							<th>Patient</th>
+							<th>Condition/Incident</th>
+							<th>Conscious</th>
+							<th>Latest Status</th>
+							<th>Edit Status</th>
+						</tr>
+					</thead>
+					<tbody class="js-hospitalizations"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 	
 </section>
 
-<section class="questions">
-	<h2>Questions</h2>
-	<table class="questions js-questions-table table table-hover table-responsive">
-		<thead>
-			<tr class="questions-headings">
-				<th>Patient</th>
-				<th>Asker</th>
-				<th>Question</th>
-				<th>Answer</th>
-			</tr>
-		</thead>
-		<tbody class="js-questions"></tbody>
-	</table>
+<section class="questions" id="questions">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>Questions</h2>
+				<table class="questions js-questions-table table table-hover table-responsive">
+					<thead>
+						<tr class="questions-headings">
+							<th>Patient</th>
+							<th>Asker</th>
+							<th>Question</th>
+							<th>Answer</th>
+						</tr>
+					</thead>
+					<tbody class="js-questions"></tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 	
 </section>
 
-<section class="new-hospitalization">
-	<h2>New Hospitalization</h2>
-	<form class="create">
-		<label for="patient">Patient</label><br>
-		<input type="type" name="patient"><br>
-		<label for="condition">Condition</label><br>
-		<input type="text" name="condition"><br>
-		<label for="conscious">Conscious?</label><br>
-		<input type="radio" name="conscious" value="yes" id="yes">
-		<label for="yes">Yes</label>
-		<input type="radio" name="conscious" value="no" id="no">
-		<label for="no">No</label><br>
-		<button type="submit" class="new-entry">Submit</button>
-	</form>
+<section class="new-hospitalization" id="create-new">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h2>New Hospitalization</h2>
+				<form class="create">
+					<label for="patient">Patient</label><br>
+					<input type="type" name="patient"><br>
+					<label for="condition">Condition</label><br>
+					<input type="text" name="condition"><br>
+					<label for="conscious">Conscious?</label><br>
+					<input type="radio" name="conscious" value="yes" id="yes">
+					<label for="yes">Yes</label>
+					<input type="radio" name="conscious" value="no" id="no">
+					<label for="no">No</label><br>
+					<button type="submit" class="new-entry">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
 	
 </section>
 
