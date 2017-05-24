@@ -3,6 +3,7 @@
 <head>
 	<title>HospitAlert</title>
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
 <nav>
@@ -25,28 +26,42 @@
 	<section class="about">
 		<h2>In the Loop</h2>
 		<p>When a loved one is hospitalized, everyone can stay on the same page in one spot.</p>
+		<img class="right" src="img/loop.jpg">
 	</section>
 
 	<section class="updates">
-		<h2>Get realtime updates</h2>
-		<p>Get updates in realtime from someone on scene</p>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-12 pull-right">
+				<h2>Get realtime updates</h2>
+				<p>Get updates in realtime from someone on scene</p>
+				<div class="image">
+				<img class="left" src="img/updates.jpg">
+				</div>
+				</div>
+			</div>
+		</div>
 	</section>
 
 	<section class="private">
 		<h2>Keep private information private</h2>
 		<p>With HospitAlert, you have the power to choose who gets to see your updates</p>
+		<img class="right" src="img/private.jpg">
 	</section>
 
 	<section class="ask-questions">
-		<h2>Have questions? Get answers?</h2>
+		<h2>Have questions? Get answers.</h2>
 		<p>Have questions about your loved one but aren't able to make it to the hospital?
 			Post your questions on HospitAlert to get answers.
 		</p>
+		<img class="left" src="img/questions.jpeg">
 	</section>
+
+	<!-- add sticky footer -->
 
 </main>
 
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 </body>
 </html>

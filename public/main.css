@@ -8,10 +8,21 @@ nav a {
 }
 
 .landing {
-	background: url("img/surgery-landing.jpeg");
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("img/surgery-landing.jpeg");
 	background-size: cover;
 	height: 800px;
+	color: white;
+	text-align: center;
 }
+
+/*.landing h1, .landing p {
+	position: relative;
+	top: 350px;
+}*/
 
 .visuallyhidden { 
 	border: 0; 
@@ -22,6 +33,15 @@ nav a {
 	padding: 0; 
 	position: absolute; 
 	width: 1px; 
+}
+
+img {
+	height: 200px;
+	width: auto;
+}
+
+.left {
+	float: left;
 }
 
 
