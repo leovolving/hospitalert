@@ -9,7 +9,10 @@
   "author": "L.J. Yockey",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.15.3"
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongoose": "^4.10.2",
+    "morgan": "^1.8.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

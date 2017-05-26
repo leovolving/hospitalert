@@ -39,28 +39,28 @@ var mock_questions = {
 		"userId": "1",
 		"hospitalizationId": 1,
 		"question": "Did they get a list of his current meds?",
-     "answer": ""
+     	"answer": ""
 	},
 	{
 		"id": "2",
 		"userId": "1",
 		"hospitalizationId": 2,
 		"question": "How long is the expected recovery time?",
-    "answer": ""
+    	"answer": ""
 	},
 	{
 		"id": "3",
 		"userId": "2",
 		"hospitalizationId": 3,
 		"question": "What do they believe caused the seizure?",
-    "answer": ""
+    	"answer": ""
 	},
 	{
 		"id": "4",
 		"userId": "2",
 		"hospitalizationId": 4,
 		"question": "How long will Sally be in physical therapy?",
-    "answer": ""
+    	"answer": ""
 	}
 	]
 };
