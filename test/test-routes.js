@@ -55,7 +55,7 @@ function tearDownDb() {
 	return mongoose.connection.dropDatabase();
 }
 
-describe('Hospitalization API endpoints', function() {
+describe('API endpoints', function() {
 
 
 	before(function() {
@@ -145,6 +145,26 @@ describe('Hospitalization API endpoints', function() {
 			})
 			.then(function(count) {
 				res.body.questions.should.have.length.of(count);
+			});
+		});
+
+		it('should update question: PUT', function() {
+
+			const toUpdate = generateQuestionData();
+			return Question.findOne()
+			.then(function(question) {
+				toUpdate.id = question.id;
+				return chai.request(app)
+				.put(`/questions/${toUpdate.id}`).send(toUpdate)
+			})
+			.then(function(res) {
+				res.should.have.status(204);
+				return Question.findById(toUpdate.id)
+			})
+			.then(function(res) {
+				res.id.should.equal(toUpdate.id);
+				res.question.should.equal(toUpdate.question);
+				res.answer.should.equal(toUpdate.answer);
 			});
 		});
 

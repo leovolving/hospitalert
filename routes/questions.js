@@ -19,4 +19,25 @@ router.get('/', (req, res) => {
 	});
 });
 
+router.put('/:id', (req, res) => {
+	if (req.params.id.trim() !== req.body.id.trim()) {
+		const message = 'IDs in req.params and req.body';
+		return res.status(400).send(message);
+	}
+	const changes = {};
+	const updatableFields = ['question', 'answer'];
+	updatableFields.forEach(field => {
+		if (field in req.body) {
+			changes[field] = req.body[field];
+		}
+	});
+	return Question.findByIdAndUpdate(req.params.id, {$set: changes}).exec()
+	.then(question => {
+		res.status(204).end();
+	})
+	.catch(err => {
+		console.error(err);
+	});
+});
+
 module.exports = router;

@@ -265,16 +265,27 @@ function answerQuestion() {
 
     //used in find() method to get appropriate object from
     //array of mock data
-    function getID(q) {
-      return q.id == referenceId;
-    }
-    var qToBeChanged = mock_questions.questions.find(getID);
+    // function getID(q) {
+    //   return q.id == referenceId;
+    // }
+    // var qToBeChanged = mock_questions.questions.find(getID);
 
     //updates object in mock data
-    qToBeChanged.answer = newAnswer;
+    var qToBeChanged = {
+    	id: referenceId,
+    	answer: newAnswer
+    };
 
-    //adds new data to DOM
-    $(this).parents('.answer').text(newAnswer);
+	    //adds new data to DOM
+	$(this).parents('.answer').text(newAnswer); 
+
+    $.ajax({
+    	url: `/questions/${referenceId}`,
+    	type: 'PUT',
+    	data: JSON.stringify(qToBeChanged),
+    	dataType: 'json',
+    	contentType: 'application/json'
+    });
   });
 }
 
