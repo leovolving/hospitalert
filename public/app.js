@@ -1,3 +1,5 @@
+// const {DATABASE_URL, TEST_DATABASE_URL} = require('../config');
+
 //mock data
 var mock_hospitalizations = {
 	"hospitalizations": [
@@ -65,6 +67,26 @@ var mock_questions = {
 	]
 };
 
+//GET questions
+function getQuestions(callback) {
+	var query = {
+		url: '/questions',
+		type: 'GET',
+		success: callback
+	};
+	$.ajax(query);
+}
+
+//GET hopitalizations
+function getHospitalizations(callback) {
+	var query = {
+		url: '/hospitalizations',
+		type: 'GET',
+		success: callback
+	}
+	$.ajax(query)
+}
+
 //the text input for editing a status
 var editInputTemplate = '<td><input type="text" name="edit"><button type="submit" class="change-status">Submit</button></td>';
 
@@ -89,10 +111,10 @@ function hospitalizationTableTemplate(entry) {
 
 
 //initially displays the hospitalizations with the mock data
-function displayHospitalizations() {
+function displayHospitalizations(data) {
 	$('.js-hospitalizations').empty();
 	var hospitalizationHtml = '';
-	mock_hospitalizations.hospitalizations.forEach(function(item) {
+	data.hospitalizations.forEach(function(item) {
 		hospitalizationHtml += hospitalizationTableTemplate(item);
 	});
 	$('.js-hospitalizations').html(hospitalizationHtml);
@@ -100,21 +122,21 @@ function displayHospitalizations() {
 
 
 //initially displays the questions from the mock data
-function displayQuestions() {
+function displayQuestions(data) {
 	$('.js-questions').empty();
 	var questionsHtml = "";
-	mock_questions.questions.forEach(function(item) {
+	data.questions.forEach(function(item) {
 
 		//gets the patient name that this question corresponds with
 		//by getting the patient's ID data
-		function findPatient(h) {
-			return h.id === item.hospitalizationId;
-		}
-		currentPatient = mock_hospitalizations.hospitalizations.find(findPatient).patient;
+		// function findPatient(h) {
+		// 	return h.id === item.hospitalizationId;
+		// }
+		// currentPatient = mock_hospitalizations.hospitalizations.find(findPatient).patient;
 
 		//template to update DOM
 		questionsHtml += `<tr data-id="${item.id}">
-			<td>${currentPatient}</td>
+			<td>foo</td>
 			<td>${item.userId}</td>
 			<td>${item.question} <br><button class="answer-button" type="button">Answer</button></td>
       		<td class="answer">${item.answer}</td>
@@ -168,31 +190,48 @@ function editStatus() {
 function changeStatus() {
   $('.change-status').on('click', function(e) {
     e.preventDefault();
+    //save row current row for scope
+    var row = $(this);
 
     //gets the text inputed by user
-    var newStatus = $(this).siblings('input').val();
+    var newStatus = row.siblings('input').val();
 
     //gets the value to access the corresponding object by the ID key
-    var referenceId = $(this).parents('tr').attr('data-id');
+    var referenceId = row.parents('tr').attr('data-id');
+
+    //turn req.body items into data object
+    var updateItems = {
+    	id: referenceId,
+    	latestUpdate: newStatus
+    };
 
     //function to find the appropriate object in the array of mock data
     //using find() method on array
-    function getID(h) {
-      return h.id == referenceId;
-    }
-    var hToBeChanged = mock_hospitalizations.hospitalizations.find(getID);
+    // function getID(h) {
+    //   return h.id == referenceId;
+    // }
+    // var hToBeChanged = mock_hospitalizations.hospitalizations.find(getID);
 
-    //makes changes to appropriate object in array
-    hToBeChanged.latestUpdate = newStatus;
+    // //makes changes to appropriate object in array
+    // hToBeChanged.latestUpdate = newStatus;
+
 
     //changes the latest status on table
-    $(this).parents().siblings('.status').html(newStatus);
+    row.parents().siblings('.status').html(newStatus);
 
     //gets the current patient for the updated "edit" button because a11y
-    var currentPatient = $(this).parents().siblings('.patient').text();
+    var currentPatient = row.parents().siblings('.patient').text();
 
-    //updates DOM
-    $(this).parents('.edit-field').html(editButtonTemplate(currentPatient));
+    //updates edit field on DOM
+    row.parents('.edit-field').html(editButtonTemplate(currentPatient));
+
+    $.ajax({
+    	url: `/hospitalizations/${referenceId}`,
+    	type: 'PUT',
+    	data: JSON.stringify(updateItems),
+    	dataType: 'json', 
+    	contentType: 'application/json'});
+
   });
 }
 
@@ -234,8 +273,8 @@ function answerQuestion() {
 }
 
 $(function() {
-	displayHospitalizations();
-	displayQuestions();
+	getHospitalizations(displayHospitalizations);
+	getQuestions(displayQuestions);
 	createHospitalization();
   	editStatus();
   	answerClick();

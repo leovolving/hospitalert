@@ -8,6 +8,9 @@ const questionSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'Hospitalization'
 	},
+	userId: {
+		type: String
+	},
 	question: {
 		type: String,
 		required: true
@@ -21,6 +24,7 @@ questionSchema.methods.apiRepr = function() {
 	return {
 		id: this._id,
 		hospitalizationId: this.hospitalizationId,
+		userId: this.userId,
 		question: this.question,
 		answer: this.answer
 	};
