@@ -1,5 +1,3 @@
-// const {DATABASE_URL, TEST_DATABASE_URL} = require('../config');
-
 //mock data
 var mock_hospitalizations = {
 	"hospitalizations": [
@@ -148,8 +146,8 @@ function displayQuestions(data) {
 	$('.js-questions').html(questionsHtml);
 }
 
-//pushes the new data to the mock_hospitalizations array
-//then adds that object to the hospitalization table
+//pushes the new data to the hospitalization collection
+//then adds that document to the hospitalization table
 function createHospitalization() {
 	$('form').submit(function(e) {
 		e.preventDefault();
@@ -167,11 +165,19 @@ function createHospitalization() {
 			newEntry.conscious = false;
 		}
 
-		//adds new object to mock data array
-		mock_hospitalizations.hospitalizations.push(newEntry);
+		//adds new object to hospitalization collection
+		$.ajax({
+			url: ('/hospitalizations'),
+			type: 'POST',
+			data: JSON.stringify(newEntry),
+			success: function(data) {
+				//update DOM with new item
+				return $('.js-hospitalizations').append(hospitalizationTableTemplate(data));
+			},
+			dataType: 'json',
+			contentType: 'application/json'
+		});
 
-		//update DOM
-		$('.js-hospitalizations').append(hospitalizationTableTemplate(newEntry));
 	});
 }
 

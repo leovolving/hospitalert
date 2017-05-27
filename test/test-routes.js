@@ -91,12 +91,7 @@ describe('Hospitalization API endpoints', function() {
 		});
 
 		it('should update hospitalization: PUT', function() {
-			const toUpdate = {
-				patient: faker.name.firstName(),
-				condition: faker.lorem.word(),
-				conscious: faker.random.boolean(),
-				latestUpdate: faker.lorem.words()
-			};
+			const toUpdate = generateHospitalizationData();
 			return Hospitalization.findOne()
 			.then(function(hospitalization) {
 				toUpdate.id = hospitalization.id;
@@ -113,6 +108,25 @@ describe('Hospitalization API endpoints', function() {
 				res.condition.should.equal(toUpdate.condition);
 				res.conscious.should.equal(toUpdate.conscious);
 				res.latestUpdate.should.equal(toUpdate.latestUpdate);
+			});
+		});
+
+		it('should add new hospitalization: POST', function() {
+			let hId;
+			const newItem = generateHospitalizationData();
+			return chai.request(app)
+			.post('/hospitalizations').send(newItem)
+			.then(function(res) {
+				res.should.have.status(201);
+				hId = res.body.id;
+				return Hospitalization.findById(hId)
+				.then(function(res) {
+					res.id.should.equal(hId);
+					res.patient.should.equal(newItem.patient);
+					res.condition.should.equal(newItem.condition);
+					res.conscious.should.equal(newItem.conscious);
+					res.latestUpdate.should.equal(newItem.latestUpdate);
+				});
 			});
 		});
 

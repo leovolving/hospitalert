@@ -31,8 +31,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.put('/:id', jsonParser, (req, res) => {
-	console.log(req.body.id);
-	console.log(req.params.id);
 	if (req.params.id.trim() !== req.body.id.trim()) {
 		const message = 'ID in req.params and req.body must match';
 		console.error(message);
@@ -51,7 +49,30 @@ router.put('/:id', jsonParser, (req, res) => {
 	.catch(err => {
 		console.error(err);
 		res.status(500).send('internal server error')
-	})
+	});
 });
+
+router.post('/', jsonParser, (req, res) => {
+	const requiredFields = ['patient', 'conscious'];
+	requiredFields.forEach(field => {
+		if(!(field in req.body)) {
+			const message = `Missing ${field} in req.body`;
+			console.log(message);
+			return res.status(400).send(message);
+		}
+	});
+	Hospitalization.create({
+		patient: req.body.patient,
+		condition: req.body.condition,
+		conscious: req.body.conscious,
+		latestUpdate: req.body.latestUpdate
+	})
+	.then(hospitalization => {
+		res.status(201).json(hospitalization.apiRepr());
+	})
+	.catch(err => {
+		res.status(500).send('internal server error');
+	})
+})
 
 module.exports = router;
