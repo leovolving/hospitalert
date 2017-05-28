@@ -85,6 +85,18 @@ function getHospitalizations(callback) {
 	$.ajax(query)
 }
 
+function getHById(item) {
+	var patient;
+	$.ajax({
+		url: `/hospitalizations/${item.hospitalizationId}`,
+		type: 'GET',
+		success: function(data) {
+			patient = data.patient;
+			actuallyDisplayQuestions(item, patient);
+		}
+	});
+}
+
 //the text input for editing a status
 var editInputTemplate = '<td><input type="text" name="edit"><button type="submit" class="change-status">Submit</button></td>';
 
@@ -119,31 +131,30 @@ function displayHospitalizations(data) {
 }
 
 
-//initially displays the questions from the mock data
+//initially displays the questions from database
 function displayQuestions(data) {
 	$('.js-questions').empty();
-	var questionsHtml = "";
 	data.questions.forEach(function(item) {
 
 		//gets the patient name that this question corresponds with
 		//by getting the patient's ID data
-		// function findPatient(h) {
-		// 	return h.id === item.hospitalizationId;
-		// }
-		// currentPatient = mock_hospitalizations.hospitalizations.find(findPatient).patient;
-
-		//template to update DOM
-		questionsHtml += `<tr data-id="${item.id}">
-			<td>foo</td>
-			<td>${item.userId}</td>
-			<td>${item.question} <br><button class="answer-button" type="button">Answer</button></td>
-      		<td class="answer">${item.answer}</td>
-			</tr>`;
-			//change answer button to font awesome icon
-			//answer can be text input
+		getHById(item);
 	});
+}
+
+//function broken into two parts because reasons
+function actuallyDisplayQuestions(item, patient) {
+	//template to update DOM
+	var questionsHtml = `<tr data-id="${item.id}">
+		<td>${patient}</td>
+		<td>${item.userId}</td>
+		<td>${item.question} <br><button class="answer-button" type="button">Answer</button></td>
+  		<td class="answer">${item.answer}</td>
+		</tr>`;
+		//change answer button to font awesome icon
+		//answer can be text input
 	//updates DOM
-	$('.js-questions').html(questionsHtml);
+	$('.js-questions').append(questionsHtml);
 }
 
 //pushes the new data to the hospitalization collection
@@ -211,16 +222,6 @@ function changeStatus() {
     	latestUpdate: newStatus
     };
 
-    //function to find the appropriate object in the array of mock data
-    //using find() method on array
-    // function getID(h) {
-    //   return h.id == referenceId;
-    // }
-    // var hToBeChanged = mock_hospitalizations.hospitalizations.find(getID);
-
-    // //makes changes to appropriate object in array
-    // hToBeChanged.latestUpdate = newStatus;
-
 
     //changes the latest status on table
     row.parents().siblings('.status').html(newStatus);
@@ -262,13 +263,6 @@ function answerQuestion() {
 
     //gets ID for find() function
     var referenceId = $(this).parents('tr').attr('data-id');
-
-    //used in find() method to get appropriate object from
-    //array of mock data
-    // function getID(q) {
-    //   return q.id == referenceId;
-    // }
-    // var qToBeChanged = mock_questions.questions.find(getID);
 
     //updates object in mock data
     var qToBeChanged = {
