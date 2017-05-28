@@ -90,6 +90,20 @@ describe('API endpoints', function() {
 			});
 		});
 
+		it('should return hospitalization by ID: GET', function() {
+			let hosp;
+			return Hospitalization.findOne().exec()
+			.then(function(_hosp) {
+				hosp = _hosp;
+				return chai.request(app)
+				.get(`/hospitalizations/${hosp.id}`)
+			})
+			.then(function(res) {
+				res.should.have.status(200);
+				res.body.id.should.equal(hosp.id);
+			});
+		});
+
 		it('should update hospitalization: PUT', function() {
 			const toUpdate = generateHospitalizationData();
 			return Hospitalization.findOne()
