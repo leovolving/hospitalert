@@ -1,70 +1,3 @@
-//mock data
-var mock_hospitalizations = {
-	"hospitalizations": [
-	{
-		"id": 1,
-		"patient": "Grandpa Joe",
-		"condition": "heart attack",
-		"conscious": true,
-		"latestUpdate": "Waiting to meet with doctor for results of EKG"
-	},
-	{
-		"id": 2,
-		"patient": "Mom",
-		"condition": "car accident",
-		"conscious": true,
-		"latestUpdate": "X-Ray confrimed broken leg. Waiting for cast. Should be released soon."
-	},
-	{
-		"id": 3,
-		"patient": "Ricky",
-		"condition": "seizure",
-		"conscious": true,
-		"latestUpdate": "Ricky was just taken to another room for an MRI"
-	},
-	{
-		"id": 4,
-		"patient": "Sally",
-		"condition": "hip surgery",
-		"conscious": false,
-		"latestUpdate": "Doctor says surgery was a success and that Sally should be waking up any minute now"
-	}
-	]
-};
-
-var mock_questions = {
-	"questions": [
-	{
-		"id": "1",
-		"userId": "1",
-		"hospitalizationId": 1,
-		"question": "Did they get a list of his current meds?",
-     	"answer": ""
-	},
-	{
-		"id": "2",
-		"userId": "1",
-		"hospitalizationId": 2,
-		"question": "How long is the expected recovery time?",
-    	"answer": ""
-	},
-	{
-		"id": "3",
-		"userId": "2",
-		"hospitalizationId": 3,
-		"question": "What do they believe caused the seizure?",
-    	"answer": ""
-	},
-	{
-		"id": "4",
-		"userId": "2",
-		"hospitalizationId": 4,
-		"question": "How long will Sally be in physical therapy?",
-    	"answer": ""
-	}
-	]
-};
-
 //GET questions
 function getQuestions(callback) {
 	var query = {
@@ -81,8 +14,8 @@ function getHospitalizations(callback) {
 		url: '/hospitalizations',
 		type: 'GET',
 		success: callback
-	}
-	$.ajax(query)
+	};
+	$.ajax(query);
 }
 
 function getHById(item) {
@@ -102,7 +35,7 @@ var editInputTemplate = '<td><input type="text" name="edit"><button type="submit
 
 //this is being done as a function, since "patient" is presented in different forms in different
 //areas that the function gets called
-function editButtonTemplate(patient) {
+function createEditButton(patient) {
 	return `<button class="edit" type="button">Edit <span class="visuallyhidden">status of ${patient}</span></button>`;
 }
 
@@ -110,13 +43,19 @@ function editButtonTemplate(patient) {
 //this is a function, because the hospitalization object is presented in different forms
 //in different areas that the function gets called
 function hospitalizationTableTemplate(entry) {
-		return `<tr data-id="${entry.id}">
-			<td class="patient">${entry.patient}</td>
-			<td>${entry.condition}</td>
-			<td>${entry.conscious}</td>
-			<td class="status">${entry.latestUpdate}</td>
-			<td class="edit-field">${editButtonTemplate(entry.patient)}</td>
-			</tr>`;
+	if (entry.conscious === true) {
+		var conscious = 'yes';
+	}
+	else {
+		var conscious = 'no';
+	}	
+	return `<tr data-id="${entry.id}">
+		<td class="patient">${entry.patient}</td>
+		<td>${entry.condition}</td>
+		<td>${conscious}</td>
+		<td class="status">${entry.latestUpdate}</td>
+		<td class="edit-field">${createEditButton(entry.patient)}</td>
+		</tr>`;
 }
 
 
@@ -159,15 +98,15 @@ function actuallyDisplayQuestions(item, patient) {
 
 //pushes the new data to the hospitalization collection
 //then adds that document to the hospitalization table
-function createHospitalization() {
+function listenForHospitalization() {
 	$('form').submit(function(e) {
 		e.preventDefault();
 
 		//create new object to push to array
 		var newEntry = {
-			"id": mock_hospitalizations.hospitalizations.length + 1,
 			"patient": $('input[name="patient"]').val(),
-			"condition": $('input[name="condition"]').val()
+			"condition": $('input[name="condition"]').val(),
+			"latestUpdate": $('input[name="status"]').val()
 		};
 		if ($('input[name="conscious"]:checked').val() === 'yes') {
 			newEntry.conscious = true;
@@ -230,7 +169,7 @@ function changeStatus() {
     var currentPatient = row.parents().siblings('.patient').text();
 
     //updates edit field on DOM
-    row.parents('.edit-field').html(editButtonTemplate(currentPatient));
+    row.parents('.edit-field').html(createEditButton(currentPatient));
 
     $.ajax({
     	url: `/hospitalizations/${referenceId}`,
@@ -283,10 +222,15 @@ function answerQuestion() {
   });
 }
 
+//runs all event listeners
+function attachListeners() {
+	listenForHospitalization();
+  	editStatus();
+  	answerClick();
+}
+
 $(function() {
 	getHospitalizations(displayHospitalizations);
 	getQuestions(displayQuestions);
-	createHospitalization();
-  	editStatus();
-  	answerClick();
+	attachListeners();
 });

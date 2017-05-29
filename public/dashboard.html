@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta name="viewport" content="width=device-width">
-	<title>Dashboard | HospitAlert</title>
+	<title>HospitAlert | Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="icon" type="image/icon" href="img/favicon.ico">
@@ -43,6 +43,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2>Hospitalizations</h2>
+				<p>Here is where you can view the hospitalizations that you've added. You can update the status of the patient here.</p>
 				<table class="hospitalizations js-hospitalizations-table table table-hover table-responsive">
 					<thead>
 						<tr class="hospitalizations-headings">
@@ -66,6 +67,7 @@
 		<div class="row">
 			<div class="col-md-12">
 				<h2>Questions</h2>
+				<p>If people have questions about the hospitalizations you've added, you can view and answer them here.</p>
 				<table class="questions js-questions-table table table-hover table-responsive">
 					<thead>
 						<tr class="questions-headings">
@@ -93,11 +95,10 @@
 					<input type="type" name="patient"><br>
 					<label for="condition">Condition</label><br>
 					<input type="text" name="condition"><br>
+					<input type="checkbox" name="conscious">
 					<label for="conscious">Conscious?</label><br>
-					<input type="radio" name="conscious" value="yes" id="yes">
-					<label for="yes">Yes</label>
-					<input type="radio" name="conscious" value="no" id="no">
-					<label for="no">No</label><br>
+					<label for="status">Status</label><br>
+					<input type="text" name="status"><br>
 					<button type="submit" class="new-entry">Submit</button>
 				</form>
 			</div>
