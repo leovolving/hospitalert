@@ -52,6 +52,10 @@ img {
 	float: left;
 }
 
+.pull-left, .pull-right {
+	max-width: 300px;
+}
+
 .new-hospitalization, .ask-questions {
 	margin-bottom: 50px;
 }
