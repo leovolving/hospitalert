@@ -3,6 +3,7 @@
 <head>
 	<meta name="viewport" content="width=device-width">
 	<title>HospitAlert | Dashboard</title>
+	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="icon" type="image/icon" href="img/favicon.ico">
@@ -37,80 +38,84 @@
 </header>
 
 <main>
-	
-<section class="hospitalizations" id="hospitalizations"> 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Hospitalizations</h2>
-				<p>Here is where you can view the hospitalizations that you've added. You can update the status of the patient here.</p>
-				<table class="hospitalizations js-hospitalizations-table table table-hover table-responsive">
-					<thead>
-						<tr class="hospitalizations-headings">
-							<th>Patient</th>
-							<th>Condition/Incident</th>
-							<th>Conscious</th>
-							<th>Latest Status</th>
-							<th>Edit Status</th>
-						</tr>
-					</thead>
-					<tbody class="js-hospitalizations"></tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-	
-</section>
 
-<section class="questions" id="questions">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Questions</h2>
-				<p>If people have questions about the hospitalizations you've added, you can view and answer them here.</p>
-				<table class="questions js-questions-table table table-hover table-responsive">
-					<thead>
-						<tr class="questions-headings">
-							<th>Patient</th>
-							<th>Asker</th>
-							<th>Question</th>
-							<th>Answer</th>
-						</tr>
-					</thead>
-					<tbody class="js-questions"></tbody>
-				</table>
+	<section class="new-display-test">
+		<h2>Hospitalizations</h2>
+		<ul class="new-h-test"></ul>
+	</section>
+	
+	<section class="hospitalizations" id="hospitalizations"> 
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Hospitalizations</h2>
+					<p>Here is where you can view the hospitalizations that you've added. You can update the status of the patient here.</p>
+					<table class="hospitalizations js-hospitalizations-table table table-hover table-responsive">
+						<thead>
+							<tr class="hospitalizations-headings">
+								<th>Patient</th>
+								<th>Condition/Incident</th>
+								<th>Conscious</th>
+								<th>Latest Status</th>
+								<th>Edit Status</th>
+							</tr>
+						</thead>
+						<tbody class="js-hospitalizations"></tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-</section>
+		
+	</section>
 
-<section class="new-hospitalization" id="create-new">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2>New Hospitalization</h2>
-				<form class="create">
-					<label for="patient">Patient</label><br>
-					<input type="type" name="patient"><br>
-					<label for="condition">Condition</label><br>
-					<input type="text" name="condition"><br>
-					<input type="checkbox" name="conscious">
-					<label for="conscious">Conscious?</label><br>
-					<label for="status">Status</label><br>
-					<input type="text" name="status"><br>
-					<button type="submit" class="new-entry">Submit</button>
-				</form>
+	<section class="questions" id="questions">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Questions</h2>
+					<p>If people have questions about the hospitalizations you've added, you can view and answer them here.</p>
+					<table class="questions js-questions-table table table-hover table-responsive">
+						<thead>
+							<tr class="questions-headings">
+								<th>Patient</th>
+								<th>Asker</th>
+								<th>Question</th>
+								<th>Answer</th>
+							</tr>
+						</thead>
+						<tbody class="js-questions"></tbody>
+					</table>
+				</div>
 			</div>
 		</div>
-	</div>
-	
-</section>
+		
+	</section>
+
+	<section class="new-hospitalization" id="create-new">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>New Hospitalization</h2>
+					<form class="create">
+						<label for="patient">Patient</label><br>
+						<input type="type" name="patient"><br>
+						<label for="condition">Condition</label><br>
+						<input type="text" name="condition"><br>
+						<input type="checkbox" name="conscious">
+						<label for="conscious">Conscious?</label><br>
+						<label for="status">Status</label><br>
+						<input type="text" name="status"><br>
+						<button type="submit" class="new-entry">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</section>
 
 </main>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="dashboard.js"></script>
 </body>
 </html>

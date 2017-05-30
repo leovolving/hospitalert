@@ -1,3 +1,7 @@
+body {
+	font-family: 'Nunito', sans-serif;
+}
+
 nav li {
 	display: inline;
 	list-style-type: none;
@@ -12,20 +16,20 @@ nav a {
 }
 
 .landing {
-	background: linear-gradient(
+/*	background: linear-gradient(
       rgba(0, 0, 0, 0.3),
       rgba(0, 0, 0, 0.3)
     ),
     url("img/surgery-landing.jpeg");
 	background-size: cover;
 	height: 600px;
-	color: white;
+	color: white;*/
 	text-align: center;
 }
 
-.landing a, .landing a:hover, .landing a:focus {
+/*.landing a, .landing a:hover, .landing a:focus {
 	color: white;
-}
+}*/
 
 /*.landing h1, .landing p {
 	position: relative;

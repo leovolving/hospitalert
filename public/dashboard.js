@@ -1,3 +1,37 @@
+//new stuff per Derek and E.J.'s suggestions
+function displayNewTest(data) {
+	var hDisplay = '';
+	data.hospitalizations.forEach(function(item) {
+		hDisplay += `<li><button class="h-view" data-id="${item.id}">${item.patient}</button></li>`;
+	});
+	$('.new-h-test').html(hDisplay);
+}
+
+function showMoreDetails() {
+	$('.new-display-test').on('click', '.h-view', function(e) {
+		e.preventDefault();
+		var currentId = $(this).attr('data-id');
+		getHByIdNew(currentId, showHDetails);
+	});
+}
+
+function getHByIdNew(id, callback) {
+	var patient;
+	$.ajax({
+		url: `/hospitalizations/${id}`,
+		type: 'GET',
+		success: callback
+	});
+}
+
+function showHDetails(data) {
+	$('.js-hospitalizations').empty();
+	var hospitalizationHtml = '';
+	console.log(data);
+	hospitalizationHtml += hospitalizationTableTemplate(data);
+	$('.js-hospitalizations').html(hospitalizationHtml);
+}
+
 //GET questions
 function getQuestions(callback) {
 	var query = {
@@ -227,10 +261,11 @@ function attachListeners() {
 	listenForHospitalization();
   	editStatus();
   	answerClick();
+  	showMoreDetails();
 }
 
 $(function() {
-	getHospitalizations(displayHospitalizations);
+	getHospitalizations(displayNewTest);
 	getQuestions(displayQuestions);
 	attachListeners();
 });
