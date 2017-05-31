@@ -1,0 +1,52 @@
+{
+	"id": 1,
+	"patient": "Grandpa Joe",
+	"condition": "heart attack",
+	"conscious": true,
+	"latestUpdate": "Waiting to meet with doctor for results of EKG",
+	"questions": [{
+		"userId": "1",
+		"question": "Did they get a list of his current meds?",
+	 	"answer": ""
+	}]
+}
+{
+	"id": 2,
+	"patient": "Mom",
+	"condition": "car accident",
+	"conscious": true,
+	"latestUpdate": "X-Ray confrimed broken leg. Waiting for cast. Should be released soon.",
+	"questions": [{
+		"userId": "1",
+		"question": "How long is the expected recovery time?",
+		"answer": ""
+	}]
+}
+{
+	"id": 3,
+	"patient": "Ricky",
+	"condition": "seizure",
+	"conscious": true,
+	"latestUpdate": "Ricky was just taken to another room for an MRI",
+	"questions": [{
+		"userId": "2",
+		"question": "What do they believe caused the seizure?",
+		"answer": ""
+	}]
+}
+{
+	"id": 4,
+	"patient": "Sally",
+	"condition": "hip surgery",
+	"conscious": false,
+	"latestUpdate": "Doctor says surgery was a success and that Sally should be waking up any minute now",
+	"questions": [{
+		"userId": "2",
+		"question": "How long will Sally be in physical therapy?",
+		"answer": ""
+	}]
+}
+
+
+
+

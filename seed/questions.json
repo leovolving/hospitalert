@@ -1,28 +1,28 @@
 	{
 		"id": "1",
 		"userId": "1",
-		"hospitalizationId": "59277e806fc6b56ce8f8d32f",
+		"_hospitalization": "59277e806fc6b56ce8f8d32f",
 		"question": "Did they get a list of his current meds?",
      	"answer": ""
 	}
 	{
 		"id": "2",
 		"userId": "1",
-		"hospitalizationId": "59277e806fc6b56ce8f8d32e",
+		"_hospitalization": "59277e806fc6b56ce8f8d32e",
 		"question": "How long is the expected recovery time?",
     	"answer": ""
 	}
 	{
 		"id": "3",
 		"userId": "2",
-		"hospitalizationId": "59277e806fc6b56ce8f8d330",
+		"_hospitalization": "59277e806fc6b56ce8f8d330",
 		"question": "What do they believe caused the seizure?",
     	"answer": ""
 	}
 	{
 		"id": "4",
 		"userId": "2",
-		"hospitalizationId": "59277e806fc6b56ce8f8d32d",
+		"_hospitalization": "59277e806fc6b56ce8f8d32d",
 		"question": "How long will Sally be in physical therapy?",
     	"answer": ""
 	}

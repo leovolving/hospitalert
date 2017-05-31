@@ -2,20 +2,52 @@
 function displayNewTest(data) {
 	var hDisplay = '';
 	data.hospitalizations.forEach(function(item) {
-		hDisplay += `<li><button class="h-view" data-id="${item.id}">${item.patient}</button></li>`;
+		if (item.conscious === true) {
+			var conscious = 'yes';
+		}
+		else {
+			var conscious = 'no';
+		}
+		hDisplay += (
+			`<div class="js-accordion__panel" data-id="${item.id}">
+				<h2 class="js-accordion__header">${item.patient}</h2>
+				<h3>Status</h3>
+				<p>${item.latestUpdate}</p>
+				<h3>Condition</h3>
+				<p>${item.condition}</p>
+				<h3>Conscious?</h3>
+				<p>${conscious}</p>
+				<h3 class="questions">Questions</h3>
+				<ol class="question-list js-${item.id}"></ol>
+			</div>`);
+	getQuestionsByHId(item.id, actuallyDisplayQuestions);
 	});
-	$('.new-h-test').html(hDisplay);
+	$('.h-container').html(hDisplay);
+	$('.js-accordion').accordion();
 }
 
-function showMoreDetails() {
-	$('.new-display-test').on('click', '.h-view', function(e) {
-		e.preventDefault();
-		var currentId = $(this).attr('data-id');
-		getHByIdNew(currentId, showHDetails);
-	});
+//function broken into two parts because reasons
+function actuallyDisplayQuestions(item) {
+	//template to update DOM
+	var questionsHtml = '';
+	if (item.questions[0] !== undefined) {
+		item.questions.forEach(function(q) {
+			questionsHtml += `
+				<li data-id="${q.id}">${q.question}</li>
+					<ul>
+						<li>Asked by ${q.userId}</li>
+						<li>Answer: ${q.answer}</li>
+					</ul>`;
+			});
+			//change answer button to font awesome icon
+			//answer can be text input
+		//updates DOM
+		var HId = item.questions[0]._hospitalization;
+		$(`.js-${HId}`).html(questionsHtml);
+	}
 }
 
-function getHByIdNew(id, callback) {
+function getHByIdNew(id) {
 	var patient;
 	$.ajax({
 		url: `/hospitalizations/${id}`,
@@ -24,18 +56,10 @@ function getHByIdNew(id, callback) {
 	});
 }
 
-function showHDetails(data) {
-	$('.js-hospitalizations').empty();
-	var hospitalizationHtml = '';
-	console.log(data);
-	hospitalizationHtml += hospitalizationTableTemplate(data);
-	$('.js-hospitalizations').html(hospitalizationHtml);
-}
-
 //GET questions
-function getQuestions(callback) {
+function getQuestionsByHId(HId, callback) {
 	var query = {
-		url: '/questions',
+		url: `/questions/${HId}`,
 		type: 'GET',
 		success: callback
 	};
@@ -113,21 +137,6 @@ function displayQuestions(data) {
 		//by getting the patient's ID data
 		getHById(item);
 	});
-}
-
-//function broken into two parts because reasons
-function actuallyDisplayQuestions(item, patient) {
-	//template to update DOM
-	var questionsHtml = `<tr data-id="${item.id}">
-		<td>${patient}</td>
-		<td>${item.userId}</td>
-		<td>${item.question} <br><button class="answer-button" type="button">Answer</button></td>
-  		<td class="answer">${item.answer}</td>
-		</tr>`;
-		//change answer button to font awesome icon
-		//answer can be text input
-	//updates DOM
-	$('.js-questions').append(questionsHtml);
 }
 
 //pushes the new data to the hospitalization collection
@@ -261,11 +270,9 @@ function attachListeners() {
 	listenForHospitalization();
   	editStatus();
   	answerClick();
-  	showMoreDetails();
 }
 
 $(function() {
 	getHospitalizations(displayNewTest);
-	getQuestions(displayQuestions);
 	attachListeners();
 });

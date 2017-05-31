@@ -36,6 +36,38 @@ nav a {
 	top: 350px;
 }*/
 
+.h-display__panel[aria-hidden=true] {
+  display: none;
+}
+
+.h-display__header {
+  display: block;
+}
+
+/* title opened */
+.h-display__header[aria-expanded="true"]:before {
+  content: "- ";
+}
+/* title closed */
+.h-display__header[aria-expanded="false"]:before {
+  content: "+ ";
+}
+
+
+/*.h-display__panel[aria-hidden=true] {
+  display: none;
+}*/
+
+img {
+	height: 200px;
+	width: auto;
+}
+
+
+.new-hospitalization, .ask-questions {
+	margin-bottom: 50px;
+}
+
 .visuallyhidden { 
 	border: 0; 
 	clip: rect(0 0 0 0); 
@@ -45,23 +77,6 @@ nav a {
 	padding: 0; 
 	position: absolute; 
 	width: 1px; 
-}
-
-img {
-	height: 200px;
-	width: auto;
-}
-
-.left {
-	float: left;
-}
-
-.pull-left, .pull-right {
-	max-width: 300px;
-}
-
-.new-hospitalization, .ask-questions {
-	margin-bottom: 50px;
 }
 
 @media only screen and (min-width: 640px) {

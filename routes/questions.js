@@ -19,6 +19,20 @@ router.get('/', (req, res) => {
 	});
 });
 
+router.get('/:_hospitalization', (req, res) => {
+	Question.find({_hospitalization: req.params._hospitalization})
+	.exec()
+	.then(questions => {
+		console.log(questions);
+		res.status(200).json({questions: questions.map((question => question.apiRepr()))
+		});
+	})
+	.catch(err => {
+		console.error(err);
+		res.status(500).send('internal server error');
+	});
+});
+
 router.put('/:id', (req, res) => {
 	if (req.params.id.trim() !== req.body.id.trim()) {
 		const message = 'IDs in req.params and req.body';

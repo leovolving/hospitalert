@@ -4,9 +4,10 @@ const {Hospitalization} = require('./hospitalization');
 // const ObjectId = Schema.ObjectId;
 
 const questionSchema = mongoose.Schema({
-	hospitalizationId: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Hospitalization'
+	_hospitalization: {
+		// type: mongoose.Schema.Types.ObjectId,
+		// ref: 'Hospitalization'
+		type: String
 	},
 	userId: {
 		type: String
@@ -23,7 +24,7 @@ const questionSchema = mongoose.Schema({
 questionSchema.methods.apiRepr = function() {
 	return {
 		id: this._id,
-		hospitalizationId: this.hospitalizationId,
+		_hospitalization: this._hospitalization,
 		userId: this.userId,
 		question: this.question,
 		answer: this.answer
