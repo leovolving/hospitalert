@@ -1,29 +1,47 @@
 //new stuff per Derek and E.J.'s suggestions
-function displayNewTest(data) {
+function displayHospitalizationData(data) {
 	var hDisplay = '';
+	var id;
 	data.hospitalizations.forEach(function(item) {
+		id = item.id;
+		var conscious;
 		if (item.conscious === true) {
-			var conscious = 'yes';
+			conscious = 'yes';
 		}
 		else {
-			var conscious = 'no';
+			conscious = 'no';
 		}
 		hDisplay += (
-			`<div class="js-accordion__panel" data-id="${item.id}">
-				<h2 class="js-accordion__header">${item.patient}</h2>
-				<h3>Status</h3>
-				<p>${item.latestUpdate}</p>
-				<h3>Condition</h3>
-				<p>${item.condition}</p>
-				<h3>Conscious?</h3>
-				<p>${conscious}</p>
-				<h3 class="questions">Questions</h3>
-				<ol class="question-list js-${item.id}"></ol>
-			</div>`);
+			`<div class="js-accordion__panel" id="${id}" data-id="${item.id}">
+				<h3 class="js-accordion__header">${item.patient}</h3>
+				<h4>Condition</h4>
+				<p class="condition">${item.condition}</p>
+				<form>
+					<label for="status"><h4>Status</h4></label>
+					<p class="status">${item.latestUpdate}</p>
+					<input type="text" for="status" id="status" placeholder="edit status"><br>				
+					<label for="conscious"><h4>Conscious?</h4></label>
+					<select name="conscious" title="conscious">
+						<option value="" disabled selected>Update</option>
+						<option value="yes">yes</option>
+						<option value="no">no</option>
+					</select>
+					<p class="conscious">${conscious}</p>
+					<h4 class="questions">Questions</h4>
+					<ol class="question-list js-${item.id}"></ol>
+					${createSubmitButton(item.patient)}
+				</form>
+				</div>`);
 	getQuestionsByHId(item.id, actuallyDisplayQuestions);
 	});
-	$('.h-container').html(hDisplay);
-	$('.js-accordion').accordion();
+	if ($('.h-container').is(':empty')) {
+		$('.h-container').html(hDisplay);
+		$('.js-accordion').accordion();
+	}
+	else {
+		$('.h-container').append(hDisplay);
+		$('.h-container').accordion();
+	}
 }
 
 //function broken into two parts because reasons
@@ -33,11 +51,14 @@ function actuallyDisplayQuestions(item) {
 	if (item.questions[0] !== undefined) {
 		item.questions.forEach(function(q) {
 			questionsHtml += `
+				<label for="${q.questions}">
 				<li data-id="${q.id}">${q.question}</li>
+				</label>
 					<ul>
 						<li>Asked by ${q.userId}</li>
 						<li>Answer: ${q.answer}</li>
-					</ul>`;
+					</ul>
+				<input type="text" for="${q.question}" id="${q.question}" placeholder="update answer">`;
 			});
 			//change answer button to font awesome icon
 			//answer can be text input
@@ -93,8 +114,8 @@ var editInputTemplate = '<td><input type="text" name="edit"><button type="submit
 
 //this is being done as a function, since "patient" is presented in different forms in different
 //areas that the function gets called
-function createEditButton(patient) {
-	return `<button class="edit" type="button">Edit <span class="visuallyhidden">status of ${patient}</span></button>`;
+function createSubmitButton(patient) {
+	return `<button class="edit" type="submit">Submit all changes<span class="visuallyhidden"> for ${patient}</span></button>`;
 }
 
 //pushes the new data to the hospitalization collection
@@ -123,8 +144,10 @@ function listenForHospitalization() {
 			data: JSON.stringify(newEntry),
 			success: function(data) {
 				//update DOM with new item
-				var newPost = [data];
-				return $('.js-hospitalizations').append(displayNewTest(newPost));
+				var newPost = {
+					hospitalizations: [data]
+				};
+				return $('.js-hospitalizations').append(displayHospitalizationData(newPost));
 			},
 			dataType: 'json',
 			contentType: 'application/json'
@@ -133,9 +156,20 @@ function listenForHospitalization() {
 	});
 }
 
+function whenSubmitButtonIsClicked() {
+	$('.h-container').on('click', '.edit', function(e) {
+		e.preventDefault();
+		var referenceHospId = $(this).parents('div').attr('data-id');
+		var referenceQuestId = $(this).siblings('ol').children('li').attr('data-id');
+		console.log(referenceQuestId);
+		
+	});
+}
+
 
 
 $(function() {
-	getHospitalizations(displayNewTest);
+	getHospitalizations(displayHospitalizationData);
 	listenForHospitalization();
+	whenSubmitButtonIsClicked();
 });

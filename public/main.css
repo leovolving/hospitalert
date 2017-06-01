@@ -53,6 +53,10 @@ nav a {
   content: "+ ";
 }
 
+.edit {
+	margin-bottom: 25px;
+}
+
 
 /*.h-display__panel[aria-hidden=true] {
   display: none;
