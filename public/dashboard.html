@@ -5,6 +5,7 @@
 	<title>HospitAlert | Dashboard</title>
 	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="icon" type="image/icon" href="img/favicon.ico">
 </head>
@@ -44,7 +45,7 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>Hospitalizations</h2>
-					<div class="js-accordion h-container" data-accordion-prefix-classes="h-display"></div>
+					<div class="js-accordion h-container" id="accordion" data-accordion-prefix-classes="h-display"></div>
 				</div>
 			</div>
 		</div>
@@ -85,7 +86,10 @@
 </footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-<script type="text/javascript" src="jquery-accessible-accordion-aria.js"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
 <script type="text/javascript" src="dashboard.js"></script>
 </body>
 </html>

@@ -12,8 +12,9 @@ function displayHospitalizationData(data) {
 			conscious = 'no';
 		}
 		hDisplay += (
-			`<div class="js-accordion__panel" id="${id}" data-id="${item.id}">
-				<h3 class="js-accordion__header">${item.patient}</h3>
+			`<h3 class="js-accordion__header">${item.patient}</h3>
+			<div class="js-accordion__panel" id="${id}" data-id="${item.id}">
+				
 				<h4>Condition</h4>
 				<p class="condition">${item.condition}</p>
 				<form>
@@ -36,11 +37,11 @@ function displayHospitalizationData(data) {
 	});
 	if ($('.h-container').is(':empty')) {
 		$('.h-container').html(hDisplay);
-		$('.js-accordion').accordion();
+		$('#accordion').accordion({collapsible: true});
 	}
 	else {
-		$('.h-container').append(hDisplay);
-		$('.h-container').accordion();
+		$('.h-container').append(hDisplay)
+		$('.h-container').accordion('refresh');
 	}
 }
 
