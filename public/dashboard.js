@@ -4,13 +4,7 @@ function displayHospitalizationData(data) {
 	var id;
 	data.hospitalizations.forEach(function(item) {
 		id = item.id;
-		var conscious;
-		if (item.conscious === true) {
-			conscious = 'yes';
-		}
-		else {
-			conscious = 'no';
-		}
+		var conscious = checkIfConscious(item);
 		hDisplay += (
 			`<h3 class="js-accordion__header">${item.patient}</h3>
 			<div class="js-accordion__panel" id="${id}" data-id="${item.id}">
@@ -24,8 +18,8 @@ function displayHospitalizationData(data) {
 					<label for="conscious"><h4>Conscious?</h4></label>
 					<select name="conscious" title="conscious">
 						<option value="" disabled selected>Update</option>
-						<option value="yes">yes</option>
-						<option value="no">no</option>
+						<option value="true">yes</option>
+						<option value="false">no</option>
 					</select>
 					<p class="conscious">${conscious}</p>
 					<h4 class="questions">Questions</h4>
@@ -37,12 +31,23 @@ function displayHospitalizationData(data) {
 	});
 	if ($('.h-container').is(':empty')) {
 		$('.h-container').html(hDisplay);
-		$('#accordion').accordion({collapsible: true});
+		$('#accordion').accordion({collapsible: true, active: 'none'});
 	}
 	else {
 		$('.h-container').append(hDisplay)
 		$('.h-container').accordion('refresh');
 	}
+}
+
+function checkIfConscious(item) {
+	var conscious;
+	if (item.conscious === true) {
+		conscious = 'yes';
+	}
+	else {
+		conscious = 'no';
+	}
+	return conscious;
 }
 
 //function broken into two parts because reasons
@@ -52,14 +57,14 @@ function actuallyDisplayQuestions(item) {
 	if (item.questions[0] !== undefined) {
 		item.questions.forEach(function(q) {
 			questionsHtml += `
-				<label for="${q.questions}">
+				<label for="question" data-id="${q.id}">
 				<li data-id="${q.id}">${q.question}</li>
 				</label>
 					<ul>
 						<li>Asked by ${q.userId}</li>
-						<li>Answer: ${q.answer}</li>
+						<li class="js-${q.id}">Answer: <span id="answer">${q.answer}</span></li>
 					</ul>
-				<input type="text" for="${q.question}" id="${q.question}" placeholder="update answer">`;
+				<input type="text" for="question" id="question" placeholder="update answer">`;
 			});
 			//change answer button to font awesome icon
 			//answer can be text input
@@ -160,11 +165,75 @@ function listenForHospitalization() {
 function whenSubmitButtonIsClicked() {
 	$('.h-container').on('click', '.edit', function(e) {
 		e.preventDefault();
-		var referenceHospId = $(this).parents('div').attr('data-id');
-		var referenceQuestId = $(this).siblings('ol').children('li').attr('data-id');
-		console.log(referenceQuestId);
+		var form = $(this).parents('form');
+		var consciousField = form.children('select[name=conscious]').val();
+		if (consciousField !== null) {
+			consciousField = (consciousField === 'true') ? true : false;
+		}
+		var objectForHospitalizations = {
+			id: $(this).parents('div').attr('data-id'),
+			latestUpdate: form.children('input#status').val(),
+			conscious: consciousField
+		};
+		var objectForQuestions = {
+			id: $(this).siblings('ol').children('label').attr('data-id'),
+			answer: form.children('ol').find('input[for=question]').val()
+		};
+		updateHospitalization(objectForHospitalizations);
+		updateQuestion(objectForQuestions);
 		
 	});
+}
+
+function updateQuestion(object) {
+	var toUpdate = {};
+	for (var item in object) {
+		if (object[item] !== null && object[item] !== '') {
+			toUpdate[item] = object[item];
+		}
+	}
+	if (Object.keys(toUpdate).length !== 1) {
+		$(`.js-${object.id}`).find('#answer').text(object.answer);
+		$('#question').val('');
+		$.ajax({
+			url: `questions/${toUpdate.id}`,
+			method: 'PUT',
+			data: JSON.stringify(toUpdate),
+    		dataType: 'json', 
+    		contentType: 'application/json'
+		});
+	}
+}
+
+function updateHospitalization(object) {
+	var toUpdate = {};
+	for (var item in object) {
+		if (object[item] !== null && object[item] !== '') {
+			toUpdate[item] = object[item];
+		}
+	}
+	if (Object.keys(toUpdate).length !== 1) {
+		hUpdateDom(toUpdate);
+		$.ajax({
+			url: `hospitalizations/${toUpdate.id}`,
+			method: 'PUT',
+			data: JSON.stringify(toUpdate),
+    		dataType: 'json', 
+    		contentType: 'application/json'
+		});
+	}
+}
+
+function hUpdateDom(object) {
+	var target = $(`#${object.id}`).children('form');
+	if (object.latestUpdate) {
+		target.children('.status').text(object.latestUpdate);
+		target.children('input').val('');
+	}
+	if ('conscious' in object) {
+		var conscious = checkIfConscious(object);
+		target.children('.conscious').text(conscious);
+	}
 }
 
 
