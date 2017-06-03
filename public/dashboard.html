@@ -17,7 +17,6 @@
 				<ul>
 					<li><a href="/">Home</a> | </li>
 					<li><a href="#hospitalizations">My Hospitalizations</a> | </li>
-					<li><a href="#questions">Questions</a> | </li>
 					<li><a href="#create-new">Create New Hospitalization</a></li>
 				</ul>
 			</div>
@@ -58,14 +57,14 @@
 				<div class="col-md-12">
 					<h2>New Hospitalization</h2>
 					<form class="create">
-						<label for="patient">Patient</label><br>
-						<input type="type" name="patient"><br>
-						<label for="condition">Condition</label><br>
-						<input type="text" name="condition"><br>
+						<label for="patient" class="visuallyhidden">Patient</label><br>
+						<input type="text" name="patient" placeholder="Patient"><br>
+						<label for="condition" class="visuallyhidden">Condition</label><br>
+						<input type="text" name="condition" placeholder="Condition"><br>
+						<label for="status" class="visuallyhidden">Status</label><br>
+						<input type="text" name="status" placeholder="Status"><br>
 						<input type="checkbox" name="conscious">
-						<label for="conscious">Conscious?</label><br>
-						<label for="status">Status</label><br>
-						<input type="text" name="status"><br>
+						<label for="conscious" class="conscious">Conscious?</label><br>
 						<button type="submit" class="new-entry">Submit</button>
 					</form>
 				</div>
@@ -83,6 +82,7 @@
 		<li><a href="https://twitter.com/Ljyockey">Twitter</a></li>
 		<li><a href="https://medium.com/@Ljyockey">Medium</a></li>
 	</ul>
+	<div class="push"></div>
 </footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>

@@ -1,5 +1,6 @@
 body {
 	font-family: 'Nunito', sans-serif;
+	background-color: #63BACC;
 }
 
 nav li {
@@ -16,25 +17,85 @@ nav a {
 }
 
 .landing {
-/*	background: linear-gradient(
+	background: linear-gradient(
       rgba(0, 0, 0, 0.3),
       rgba(0, 0, 0, 0.3)
     ),
     url("img/surgery-landing.jpeg");
 	background-size: cover;
 	height: 600px;
-	color: white;*/
+	color: white;
 	text-align: center;
 }
 
-/*.landing a, .landing a:hover, .landing a:focus {
+.landing a, .landing a:hover, .landing a:focus {
 	color: white;
-}*/
+}
 
-/*.landing h1, .landing p {
-	position: relative;
-	top: 350px;
-}*/
+h2 {
+	text-align: center;
+}
+
+.features h2 {
+	margin-bottom: 0;
+}
+
+nav, .col-md-3, h2, .about, .cta a, footer {
+	background-color: #f6f6f6;	
+	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, 
+		rgba(0, 0, 0, 0.12) 0px 1px 4px;
+	border-radius: 2px;
+}
+
+.container, .row {
+	text-align: center;
+	margin-top: 0;
+}
+
+img {
+	width: 100%;
+	height: auto;
+	padding-bottom: 10px;
+}
+
+section {
+	margin: 20px;
+}
+
+.cta p {
+	width: 100%;
+	text-align: center;
+}
+
+.cta a {
+	text-align: center;
+	padding: 10px;
+	display: inline-block;
+
+}
+
+footer li {
+	list-style-type: none;
+	display: inline;
+}
+
+footer {
+	min-height: 100%;
+	margin-bottom: -50px;
+	background-color: #f6f6f6;
+}
+
+footer ul {
+	margin-bottom: -50px;
+}
+
+.push {
+	height: 50px;
+}
+
+.hospitalizations h2 {
+	margin-bottom: 0;
+}
 
 .h-display__panel[aria-hidden=true] {
   display: none;
@@ -53,18 +114,22 @@ nav a {
   content: "+ ";
 }
 
-.edit {
-	margin-bottom: 25px;
+.ui-state-active {
+	background-color: #8380B6;
 }
 
+input[type=text] {
+	background-color: inherit;
+	border: none;
+	border-bottom: 2px solid black
+}
 
-/*.h-display__panel[aria-hidden=true] {
-  display: none;
-}*/
+input[type=text]::placeholder {
+	color: inherit;
+}
 
-img {
-	height: 200px;
-	width: auto;
+.edit {
+	margin-bottom: 25px;
 }
 
 
@@ -84,7 +149,10 @@ img {
 }
 
 @media only screen and (min-width: 640px) {
-/*	.landing {
+	.landing {
 		height: 800px;
-	}*/
+	}
+	.col-md-3 {
+		margin-left: 60px;
+	}
 }
