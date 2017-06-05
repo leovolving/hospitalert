@@ -7,7 +7,7 @@ function displayHospitalizationData(data) {
 		var conscious = checkIfConscious(item);
 		hDisplay += (
 			`<h3 class="js-accordion__header">${item.patient}</h3>
-			<div class="js-accordion__panel" id="${id}" data-id="${item.id}">
+			<div class="js-accordion__panel content" id="${id}" data-id="${item.id}">
 				
 				<h4>Condition</h4>
 				<p class="condition">${item.condition}</p>
@@ -31,7 +31,7 @@ function displayHospitalizationData(data) {
 	});
 	if ($('.h-container').is(':empty')) {
 		$('.h-container').html(hDisplay);
-		$('#accordion').accordion({collapsible: true, active: 'none'});
+		$('#accordion').accordion({collapsible: true, active: 'none', heightStyle: 'content'});
 	}
 	else {
 		$('.h-container').append(hDisplay)

@@ -3,25 +3,33 @@
 <head>
 	<meta name="viewport" content="width=device-width">
 	<title>HospitAlert | Dashboard</title>
-	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Monoton" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="icon" type="image/icon" href="img/favicon.ico">
 </head>
 <body>
-<nav>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<ul>
-					<li><a href="/">Home</a> | </li>
-					<li><a href="#hospitalizations">My Hospitalizations</a> | </li>
-					<li><a href="#create-new">Create New Hospitalization</a></li>
-				</ul>
-			</div>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#landing-nav" aria-expanded="false">
+				<span class="sr-only">Toggle Navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/">HospitAlert</a>
+		</div>
+		<div class="collapse navbar-collapse" id="landing-nav">
+			<ul class="nav navbar-nav">
+				<li><a href="#hospitalizations">My Hospitalizations</a></li>
+				<li><a href="#create-new">Add New Hospitalizations</a></li>
+				<li><a href="#contact">Contact</a></li>
+			</ul>
 		</div>
 	</div>
+
 </nav>
 
 <header class="dashboard">
@@ -39,7 +47,7 @@
 
 <main>
 
-	<section class="hospitalizations">
+	<section class="hospitalizations" id="hospitalizations">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
@@ -57,11 +65,11 @@
 				<div class="col-md-12">
 					<h2>New Hospitalization</h2>
 					<form class="create">
-						<label for="patient" class="visuallyhidden">Patient</label><br>
+						<label for="patient">Patient</label>
 						<input type="text" name="patient" placeholder="Patient"><br>
-						<label for="condition" class="visuallyhidden">Condition</label><br>
+						<label for="condition">Condition</label>
 						<input type="text" name="condition" placeholder="Condition"><br>
-						<label for="status" class="visuallyhidden">Status</label><br>
+						<label for="status">Status</label>
 						<input type="text" name="status" placeholder="Status"><br>
 						<input type="checkbox" name="conscious">
 						<label for="conscious" class="conscious">Conscious?</label><br>
@@ -90,6 +98,7 @@
   src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
   integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="dashboard.js"></script>
 </body>
 </html>

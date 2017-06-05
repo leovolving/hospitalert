@@ -4,23 +4,37 @@
 	<title>HospitAlert</title>
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nunito|Monoton" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="icon" type="image/icon" href="img/favicon.ico">
 </head>
 <body>
-<nav>
-	<ul>
-		<li><a href="#about">About</a> | </li>
-		<li><a href="/dashboard">Demo</a></li>
-	</ul>
-
-</nav>
 
 <header class="landing">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#landing-nav" aria-expanded="false">
+					<span class="sr-only">Toggle Navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">HospitAlert</a>
+			</div>
+			<div class="collapse navbar-collapse" id="landing-nav">
+				<ul class="nav navbar-nav">
+					<li><a href="/dashboard">Demo</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+				</ul>
+			</div>
+		</div>
+
+	</nav>
 	<h1>HospitAlert</h1>
 	<p>Stay up-to-date when the unthinkable happens. Any time. Anywhere.</p>
-	<p>View the <a href="/dashboard">demo.</a></p>
+	<p class="view">View the <a href="/dashboard">demo.</a></p>
 </header>
 
 <main>
@@ -68,13 +82,34 @@
 		 <p><a href="/dashboard">View the Demo</a></p>
 	</section>
 
+	<section class="contact" id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>Contact</h2>
+					<p>Have any questions or suggestions for HospitAlert? Feel free to contact me at linyockey@gmail.com, or by using the form below.</p>
+					<form class="contact" action="mailto:linyockey@gmail.com" method="post" enctype="text/plain">
+						<label for="Name">Name</label>
+						<input type="text" name="Name" placeholder="Name"><br>
+						<label for="Email">Email</label>
+						<input type="email" name="Email" placeholder="Email"><br>
+						<label for="message">Message</label>
+						<textarea name="message" placeholder="message"></textarea><br>
+						<button type="submit" class="new-contact">Send</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+
 </main>
 
 	<!-- add sticky footer -->
 
 <footer>
 	<ul>
-		<li>Made by L.J. Yockey</li>
+		Made by L.J. Yockey</li>
 		<li><a href="https://github.com/Ljyockey">GitHub</a></li>
 		<li><a href="https://twitter.com/Ljyockey">Twitter</a></li>
 		<li><a href="https://medium.com/@Ljyockey">Medium</a></li>
@@ -82,5 +117,6 @@
 </footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
 </html>

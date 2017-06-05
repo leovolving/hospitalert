@@ -1,15 +1,18 @@
+
 body {
 	font-family: 'Nunito', sans-serif;
 	background-color: #63BACC;
+	font-size: 16px;
 }
 
-nav li {
-	display: inline;
-	list-style-type: none;
+.navbar {
+	background-color: #00b1bd;
+	border: none;
+	width: 100%;
 }
 
-nav {
-	margin-top: 20px;
+.navbar ul {
+	float: right;
 }
 
 nav a {
@@ -28,6 +31,11 @@ nav a {
 	text-align: center;
 }
 
+.navbar-brand {
+	display: inline-block;
+	font-family: 'Monoton', cursive;
+}
+
 .landing a, .landing a:hover, .landing a:focus {
 	color: white;
 }
@@ -40,7 +48,7 @@ h2 {
 	margin-bottom: 0;
 }
 
-nav, .col-md-3, h2, .about, .cta a, footer {
+.col-md-3, h2, .about, .cta a, footer {
 	background-color: #f6f6f6;	
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, 
 		rgba(0, 0, 0, 0.12) 0px 1px 4px;
@@ -97,34 +105,25 @@ footer ul {
 	margin-bottom: 0;
 }
 
-.h-display__panel[aria-hidden=true] {
-  display: none;
-}
-
-.h-display__header {
-  display: block;
-}
-
-/* title opened */
-.h-display__header[aria-expanded="true"]:before {
-  content: "- ";
-}
-/* title closed */
-.h-display__header[aria-expanded="false"]:before {
-  content: "+ ";
+.h-container {
+	text-align: left;
 }
 
 .ui-state-active {
-	background-color: #8380B6;
+	background-color: #587792;
 }
 
-input[type=text] {
+.content {
+	height: 300px;
+}
+
+input[type=text], input[type=email], textarea {
 	background-color: inherit;
 	border: none;
 	border-bottom: 2px solid black
 }
 
-input[type=text]::placeholder {
+input::placeholder, textarea::placeholder {
 	color: inherit;
 }
 
@@ -154,5 +153,8 @@ input[type=text]::placeholder {
 	}
 	.col-md-3 {
 		margin-left: 60px;
+	}
+	.content {
+		height: 100%;
 	}
 }
