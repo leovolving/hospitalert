@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Nunito|Monoton" rel="stylesheet">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="icon" type="image/icon" href="img/favicon.ico">
 </head>
@@ -39,43 +41,50 @@
 
 <main>
 
-	<section class="about" id="about">
-		<h2>What is HospitAlert?</h2>
-		<p>It's everyone's worst nightmare: A loved one has been hospitalized and you are unable to be there with them.
-		If someone is at the hospital with them, keeping everybody up-to-date with calls and texts may be too overwhelming.
-		Social media is fast and easy, but it isn't very private. With HospitAlert, you and your family members can
-		all stay up-to-date in a fast, secure location.</p>
+	<section id="about">
+		<div class="demo-card-wide mdl-card mdl-shadow--8dp">
+			<div class="mdl-card__title">
+				<h2>What is HospitAlert?</h2>
+			</div>
+			<div class="mdl-card__supporting-text">
+				<p>It's everyone's worst nightmare: A loved one has been hospitalized and you are unable to be there with them.
+				If someone is at the hospital with them, keeping everybody up-to-date with calls and texts may be too overwhelming.
+				Social media is fast and easy, but it isn't very private. With HospitAlert, you and your family members can
+				all stay up-to-date in a fast, secure location.</p>
+			</div>
 	</section>
 
 	<section class="features">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-3">
-					<div class="post">
-						<h3>Add an Event</h3>
-						<p>If you are at the hospital with a consenting loved one, you can create a new hospitalization.
-						You will then be able to control who is able to view the hospitalization.</p>
-					</div>
-					<img src="img/loop.jpg">
-				</div>
-				<div class="col-md-3">
-					<div class="status">
-						<h3>Update Status</h3>
-						<p>Post updates any time you have information you want to share. People who can view this
-						hospitalization will be notified immediately.</p>
-					</div>
-					<img src="img/updates.jpg">
-				</div>
-				<div class="col-md-3">
-					<div class="questions">
-						<h3>Ask Questions. Get Answers.</h3>
-						<p>People who can see your hospitalization will also be able to post questions they may have.
-						Answer the question (or change the answer if things change) and the asker will be notified.</p>
-					</div>
-					<img src="img/questions.jpeg">
-				</div>
+		<div class="post mdl-card mdl-shadow--6dp">
+			<div class="mdl-card__title mdl-card--expand">
+				<h3 class="mdl-card__title-text">Add an Event</h3>
+			</div>
+			<div class="mdl-card__supporting-text">
+				<p>If you are at the hospital with a consenting loved one, you can create a new hospitalization.
+				You will then be able to control who is able to view the hospitalization.</p>
 			</div>
 		</div>
+
+		<div class="status mdl-card mdl-shadow--6dp">
+			<div class="mdl-card__title mdl-card--expand">
+				<h3>Update Status</h3>
+			</div>
+			<div class="mdl-card__supporting-text">
+				<p>Post updates any time you have information you want to share. People who can view this
+				hospitalization will be notified immediately.</p>
+			</div>
+		</div>
+
+		<div class="questions mdl-card mdl-shadow--6dp">
+			<div class="mdl-card__title mdl-card--expand">
+				<h3>Ask Questions. Get Answers.</h3>
+			</div>
+			<div class="mdl-card__supporting-text">
+				<p>People who can see your hospitalization will also be able to post questions they may have.
+				Answer the question (or change the answer if things change) and the asker will be notified.</p>
+			</div>
+		</div>
+
 	</section>
 
 	<section class="cta">
@@ -89,12 +98,12 @@
 					<h2>Contact</h2>
 					<p>Have any questions or suggestions for HospitAlert? Feel free to contact me at linyockey@gmail.com, or by using the form below.</p>
 					<form class="contact" action="mailto:linyockey@gmail.com" method="post" enctype="text/plain">
-						<label for="Name">Name</label>
-						<input type="text" name="Name" placeholder="Name"><br>
-						<label for="Email">Email</label>
-						<input type="email" name="Email" placeholder="Email"><br>
-						<label for="message">Message</label>
-						<textarea name="message" placeholder="message"></textarea><br>
+						<label for="Name">Name:</label>
+						<input type="text" name="Name" placeholder="Your name"><br>
+						<label for="Email">Email:</label>
+						<input type="email" name="Email" placeholder="you@somewhere.com"><br>
+						<label for="message">Message:</label>
+						<textarea name="message" placeholder="type your message here"></textarea><br>
 						<button type="submit" class="new-contact">Send</button>
 					</form>
 				</div>
@@ -105,15 +114,14 @@
 
 </main>
 
-	<!-- add sticky footer -->
-
 <footer>
 	<ul>
-		Made by L.J. Yockey</li>
-		<li><a href="https://github.com/Ljyockey">GitHub</a></li>
-		<li><a href="https://twitter.com/Ljyockey">Twitter</a></li>
-		<li><a href="https://medium.com/@Ljyockey">Medium</a></li>
+		<li>Made by L.J. Yockey</li>
+		<li><a href="https://github.com/Ljyockey"><img src="img/github.png" alt="GitHub"></a></li>
+		<li><a href="https://twitter.com/Ljyockey"><img src="img/twitter.png" alt="Twitter"></a></li>
+		<li><a href="https://medium.com/@Ljyockey"><img src="img/medium.png" alt="Medium"></a></li>
 	</ul>
+	<div class="push"></div>
 </footer>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>

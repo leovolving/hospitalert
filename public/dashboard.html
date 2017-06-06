@@ -64,17 +64,19 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h2>New Hospitalization</h2>
-					<form class="create">
-						<label for="patient">Patient</label>
-						<input type="text" name="patient" placeholder="Patient"><br>
-						<label for="condition">Condition</label>
-						<input type="text" name="condition" placeholder="Condition"><br>
-						<label for="status">Status</label>
-						<input type="text" name="status" placeholder="Status"><br>
-						<input type="checkbox" name="conscious">
-						<label for="conscious" class="conscious">Conscious?</label><br>
-						<button type="submit" class="new-entry">Submit</button>
-					</form>
+					<div class="form-container">
+						<form class="create text-center">
+							<label class=" text-right" for="patient">Patient:</label>
+							<input class=" text-left" type="text" name="patient" placeholder="ex. Mom, Steve"><br>
+							<label class=" text-right" for="condition">Condition:</label>
+							<input class=" text-left" type="text" name="condition" placeholder="ex. broken bone"><br>
+							<label for="status">Status:</label>
+							<textarea type="text" name="status" placeholder="ex. Waiting on test results"></textarea><br>
+							<input type="checkbox" name="conscious">
+							<label for="conscious">Conscious?</label><br>
+							<button type="submit" class="new-entry">Submit</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -86,9 +88,9 @@
 <footer>
 	<ul>
 		<li>Made by L.J. Yockey</li>
-		<li><a href="https://github.com/Ljyockey">GitHub</a></li>
-		<li><a href="https://twitter.com/Ljyockey">Twitter</a></li>
-		<li><a href="https://medium.com/@Ljyockey">Medium</a></li>
+		<li><a href="https://github.com/Ljyockey"><img src="img/github.png" alt="GitHub"></a></li>
+		<li><a href="https://twitter.com/Ljyockey"><img src="img/twitter.png" alt="Twitter"></a></li>
+		<li><a href="https://medium.com/@Ljyockey"><img src="img/medium.png" alt="Medium"></a></li>
 	</ul>
 	<div class="push"></div>
 </footer>

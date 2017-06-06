@@ -5,14 +5,21 @@ body {
 	font-size: 16px;
 }
 
+nav {
+	position: relative;
+}
+
 .navbar {
 	background-color: #00b1bd;
 	border: none;
 	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 10;
 }
 
 .navbar ul {
-	float: right;
+	text-align: left;
 }
 
 nav a {
@@ -20,6 +27,7 @@ nav a {
 }
 
 .landing {
+	margin-top: 50px;
 	background: linear-gradient(
       rgba(0, 0, 0, 0.3),
       rgba(0, 0, 0, 0.3)
@@ -43,9 +51,31 @@ nav a {
 h2 {
 	text-align: center;
 }
-
 .features h2 {
 	margin-bottom: 0;
+}
+
+.mdl-card {
+	max-width: 100%;
+	margin: 20px auto;
+}
+
+.post > .mdl-card__title {
+	background: url("img/loop.jpg");
+	background-size: cover;
+	color: white;
+
+}
+
+.status > .mdl-card__title {
+	background: url("img/updates.jpg");
+	background-size: cover;
+	color: white;
+}
+
+.questions > .mdl-card__title {
+	background: url("img/questions.jpeg");
+	background-size: cover;
 }
 
 .col-md-3, h2, .about, .cta a, footer {
@@ -68,6 +98,18 @@ img {
 
 section {
 	margin: 20px;
+}
+
+.form-container {
+/*	max-width: 500px;
+	margin: 0 auto;*/
+	text-align: center;
+}
+
+.create label, .contact label {
+	width: 65px;
+	text-align: right;
+	font-size: 14px;
 }
 
 .cta p {
@@ -97,6 +139,11 @@ footer ul {
 	margin-bottom: -50px;
 }
 
+footer img {
+	width: 40px;
+	height: auto;
+}
+
 .push {
 	height: 50px;
 }
@@ -123,8 +170,8 @@ input[type=text], input[type=email], textarea {
 	border-bottom: 2px solid black
 }
 
-input::placeholder, textarea::placeholder {
-	color: inherit;
+.dashboard {
+	margin-top: 50px;
 }
 
 .edit {
@@ -145,6 +192,10 @@ input::placeholder, textarea::placeholder {
 	padding: 0; 
 	position: absolute; 
 	width: 1px; 
+}
+
+.conscious {
+	display: none;
 }
 
 @media only screen and (min-width: 640px) {

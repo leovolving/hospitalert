@@ -17,11 +17,10 @@ function displayHospitalizationData(data) {
 					<input type="text" for="status" id="status" placeholder="edit status"><br>				
 					<label for="conscious"><h4>Conscious?</h4></label>
 					<select name="conscious" title="conscious">
-						<option value="" disabled selected>Update</option>
-						<option value="true">yes</option>
-						<option value="false">no</option>
+						<option value="yes" ${addSelected(item.conscious, true)}>yes</option>
+						<option value="no" ${addSelected(item.conscious, false)}>no</option>
 					</select>
-					<p class="conscious">${conscious}</p>
+					<p class="conscious" aria-hidden="true">${conscious}</p>
 					<h4 class="questions">Questions</h4>
 					<ol class="question-list js-${item.id}"></ol>
 					${createSubmitButton(item.patient)}
@@ -39,9 +38,16 @@ function displayHospitalizationData(data) {
 	}
 }
 
+function addSelected(c, bool) {
+	var selected = 'selected';
+	if (c === bool) {
+		return selected;
+	}
+}
+
 function checkIfConscious(item) {
 	var conscious;
-	if (item.conscious === true) {
+	if (item.conscious) {
 		conscious = 'yes';
 	}
 	else {
@@ -166,15 +172,16 @@ function whenSubmitButtonIsClicked() {
 	$('.h-container').on('click', '.edit', function(e) {
 		e.preventDefault();
 		var form = $(this).parents('form');
-		var consciousField = form.children('select[name=conscious]').val();
-		if (consciousField !== null) {
-			consciousField = (consciousField === 'true') ? true : false;
-		}
 		var objectForHospitalizations = {
-			id: $(this).parents('div').attr('data-id'),
+			id: form.parents('div').attr('data-id'),
 			latestUpdate: form.children('input#status').val(),
-			conscious: consciousField
 		};
+		var consciousField = form.children('select[name=conscious]').val();
+		var conscious = form.children('.conscious').text();
+		if (consciousField !== conscious) {
+			consciousField = (consciousField === 'yes') ? true : false;
+			objectForHospitalizations.conscious = consciousField;
+		}
 		var objectForQuestions = {
 			id: $(this).siblings('ol').children('label').attr('data-id'),
 			answer: form.children('ol').find('input[for=question]').val()
