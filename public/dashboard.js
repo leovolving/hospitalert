@@ -8,21 +8,24 @@ function displayHospitalizationData(data) {
 		hDisplay += (
 			`<h3 class="js-accordion__header">${item.patient}</h3>
 			<div class="js-accordion__panel content" id="${id}" data-id="${item.id}">
-				
-				<h4>Condition</h4>
-				<p class="condition">${item.condition}</p>
 				<form>
-					<label for="status"><h4>Status</h4></label>
-					<p class="status">${item.latestUpdate}</p>
-					<input type="text" for="status" id="status" placeholder="edit status"><br>				
-					<label for="conscious"><h4>Conscious?</h4></label>
-					<select name="conscious" title="conscious">
-						<option value="yes" ${addSelected(item.conscious, true)}>yes</option>
-						<option value="no" ${addSelected(item.conscious, false)}>no</option>
-					</select>
-					<p class="conscious" aria-hidden="true">${conscious}</p>
-					<h4 class="questions">Questions</h4>
-					<ol class="question-list js-${item.id}"></ol>
+					<div class="js-hospitalizations">
+						<h4>Condition</h4>
+						<p class="condition">${item.condition}</p>
+						<label for="status"><h4>Status</h4></label>
+						<p class="status">${item.latestUpdate}</p>
+						<input type="text" for="status" id="status" placeholder="edit status"><br>				
+						<label for="conscious"><h4>Conscious?</h4></label>
+						<select name="conscious" title="conscious">
+							<option value="yes" ${addSelected(item.conscious, true)}>yes</option>
+							<option value="no" ${addSelected(item.conscious, false)}>no</option>
+						</select>
+						<p class="conscious" aria-hidden="true">${conscious}</p>
+					</div>
+					<div class="questions">
+						<h4 class="questions">Questions</h4>
+						<ol class="question-list js-${item.id}"></ol>
+					</div>
 					${createSubmitButton(item.patient)}
 				</form>
 				</div>`);
