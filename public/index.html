@@ -35,9 +35,11 @@
 		</div>
 
 	</nav>
-	<h1>HospitAlert</h1>
-	<p>Stay up-to-date when the unthinkable happens. Any time. Anywhere.</p>
-	<p class="view">View the <a href="/dashboard">demo.</a></p>
+	<div class="landing-text">
+		<h1>HospitAlert</h1>
+		<p>Stay up-to-date when the unthinkable happens. Any time. Anywhere.</p>
+		<p class="view"><a href="/dashboard">View the Demo</a></p>
+	</div>
 </header>
 
 <main>
@@ -93,24 +95,28 @@
 	</section>
 
 	<section class="cta">
-		 <p><a href="/dashboard">View the Demo</a></p>
+		 <p class="view"><a href="/dashboard">View the Demo</a></p>
 	</section>
 
 	<section class="contact" id="contact">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2>Contact</h2>
-					<p>Have any questions or suggestions for HospitAlert? <br>Feel free to contact me at linyockey@gmail.com, or by using the form below.</p>
-					<form class="contact" action="mailto:linyockey@gmail.com" method="post" enctype="text/plain">
-						<label for="Name">Name:</label>
-						<input type="text" name="Name" placeholder="Your name"><br>
-						<label for="Email">Email:</label>
-						<input type="email" name="Email" placeholder="you@somewhere.com"><br>
-						<label class="move" for="message">Message:</label>
-						<textarea name="message" placeholder="type your message here"></textarea><br>
-						<button type="submit" class="new-contact">Send</button>
-					</form>
+				<div class="col-md-12 contact-card mdl-card mdl-shadow--8dp">
+					<div class="mdl-card__title mdl-card--expand">
+						<h2>Contact</h2>
+					</div>
+					<div class="mdl-card__supporting-text">
+						<p>Have any questions or suggestions for HospitAlert? <br>Feel free to contact me at linyockey@gmail.com, or by using the form below.</p>
+						<form class="contact" action="mailto:linyockey@gmail.com" method="post" enctype="text/plain">
+							<label for="Name">Name:</label>
+							<input type="text" name="Name" placeholder="Your name"><br>
+							<label for="Email">Email:</label>
+							<input type="email" name="Email" placeholder="you@somewhere.com"><br>
+							<label class="move" for="message">Message:</label>
+							<textarea name="message" placeholder="type your message here"></textarea><br>
+							<button type="submit" class="new-contact mdl-button mdl-js-button mdl-button--raised">Send</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -122,13 +128,14 @@
 <footer>
 	<ul>
 		<li>Made by L.J. Yockey</li>
-		<li><a href="https://github.com/Ljyockey"><img src="img/github.png" alt="GitHub"></a></li>
-		<li><a href="https://twitter.com/Ljyockey"><img src="img/twitter.png" alt="Twitter"></a></li>
-		<li><a href="https://medium.com/@Ljyockey"><img src="img/medium.png" alt="Medium"></a></li>
+		<li><a href="https://github.com/Ljyockey"><i class="fa fa-github fa-2x" aria-hidden="true"></i><span class="visuallyhidden">GitHub</span></a></li>
+		<li><a href="https://twitter.com/Ljyockey"><i class="fa fa-twitter fa-2x" aria-hidden="true"></i><span class="visuallyhidden">Twitter</span></a></li>
+		<li><a href="https://medium.com/@Ljyockey"><i class="fa fa-medium fa-2x" aria-hidden="true"></i><span class="visuallyhidden">Medium</span></a></li>
 	</ul>
 	<div class="push"></div>
 </footer>
 
+<script src="https://use.fontawesome.com/e2a5a772d8.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script type="text/javascript" src="scroll.js"></script>

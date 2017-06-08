@@ -132,7 +132,7 @@ function getHospitalizations(callback) {
 //this is being done as a function, since "patient" is presented in different forms in different
 //areas that the function gets called
 function createSubmitButton(patient) {
-	return `<button class="edit" type="submit">Submit all changes<span class="visuallyhidden"> for ${patient}</span></button>`;
+	return `<button class="edit mdl-button mdl-js-button mdl-button--raised" type="submit">Submit all changes<span class="visuallyhidden"> for ${patient}</span></button>`;
 }
 
 //pushes the new data to the hospitalization collection
@@ -195,7 +195,6 @@ function whenSubmitButtonIsClicked() {
 			id: $(this).siblings('.questions').children('ol').children('label').attr('data-id'),
 			answer: form.children('.questions').children('ol').find('input[for=question]').val()
 		};
-		console.log(objectForQuestions);
 		updateHospitalization(objectForHospitalizations);
 		updateQuestion(objectForQuestions);
 		

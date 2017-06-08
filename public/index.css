@@ -11,8 +11,8 @@
 	text-align: center;
 }
 
-.landing a, .landing a:hover, .landing a:focus {
-	color: white;
+.landing-text {
+	padding: 15px 15px;
 }
 
 .features h2 {
@@ -67,7 +67,7 @@
 	text-align: center;
 }
 
-.cta a {
+.view a {
 	text-align: center;
 	padding: 10px;
 	display: inline-block;
@@ -77,5 +77,8 @@
 @media only screen and (min-width: 640px) {
 	.landing {
 		height: 800px;
+	}
+	.landing-text {
+		padding: 10px 0;
 	}
 }

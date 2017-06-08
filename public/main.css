@@ -41,17 +41,17 @@ nav a {
 h2 {
 	text-align: center;
 }
-.about-wide, .dashboard-wide {
+.about-wide, .contact-card, .dashboard-wide {
 	max-width: 100%;
 	margin: 0 auto 20px auto;
 	text-align: center;
 }
 
-.about-wide h2, .dashboard-wide h1 {
+.about-wide h2, .contact-card h2, .dashboard-wide h1 {
 	margin: 0 auto;
 }
 
-.col-md-3, .about, .cta a, footer {
+.col-md-3, .about, .view a, footer {
 	background-color: #f6f6f6;	
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, 
 		rgba(0, 0, 0, 0.12) 0px 1px 4px;
@@ -104,9 +104,9 @@ footer ul {
 	margin-bottom: -50px;
 }
 
-footer img {
-	width: 40px;
-	height: auto;
+footer a {
+	color: white;
+	margin-left: 10px;
 }
 
 .push {
@@ -121,6 +121,6 @@ footer img {
 		margin-left: 60px;
 	}
 	footer a {
-		margin-left: 30px;
+		margin-left: 20px;
 	}
 }

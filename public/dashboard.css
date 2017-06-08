@@ -14,12 +14,24 @@
 	text-align: left;
 }
 
+.js-accordion__header:focus {
+	outline: 2px solid #00b1bd;
+}
+
 .ui-state-active {
 	background-color: #00b1bd;
 }
 
+h4 {
+	font-size: 1.75em; 
+}
+
 .content {
 	height: 300px;
+}
+
+.content p {
+	padding-left: 10px;
 }
 
 div.js-hospitalizations, div .questions{
@@ -27,16 +39,29 @@ div.js-hospitalizations, div .questions{
 	vertical-align: top;
 }
 
+.js-hospitalizations input[type=text]::placeholder,
+.questions input[type=text]::placeholder {
+	font-size: 0.9em;
+}
+
 input[type=text], input[type=email], textarea {
 	background-color: inherit;
 	border: none;
-	border-bottom: 2px solid black
+	border-bottom: 1px solid black
+}
+
+select {
+	margin-bottom: 20px;
 }
 
 .edit {
 	margin-bottom: 25px;
 	vertical-align: bottom;
 	margin-top: 15px;
+}
+
+button.edit {
+	font-size: 0.85em;
 }
 
 
