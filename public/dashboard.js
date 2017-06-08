@@ -25,7 +25,8 @@ function displayHospitalizationData(data) {
 					</div>
 					<div class="questions">
 						<h4 class="questions">Questions</h4>
-						<ol class="question-list js-${item.id}"></ol>
+						<p class="no-questions">No questions have been posted yet</p>
+						<ol class="question-list js-${item.id} visuallyhidden"></ol>
 					</div>
 					${createSubmitButton(item.patient)}
 				</form>
@@ -82,19 +83,11 @@ function actuallyDisplayQuestions(item) {
 			});
 		//updates DOM
 		var HId = item.questions[0]._hospitalization;
+		$(`.js-${HId}`).siblings('.no-questions').addClass('visuallyhidden');
 		$(`.js-${HId}`).html(questionsHtml);
+		$(`.js-${HId}`).removeClass('visuallyhidden');
 	}
 }
-
-//not sure if this is needed anymore
-// function getHByIdNew(id) {
-// 	var patient;
-// 	$.ajax({
-// 		url: `/hospitalizations/${id}`,
-// 		type: 'GET',
-// 		success: callback
-// 	});
-// }
 
 //GET questions
 function getQuestionsByHId(HId, callback) {
@@ -115,19 +108,6 @@ function getHospitalizations(callback) {
 	};
 	$.ajax(query);
 }
-
-//not sure if this is needed
-// function getHById(item) {
-// 	var patient;
-// 	$.ajax({
-// 		url: `/hospitalizations/${item.hospitalizationId}`,
-// 		type: 'GET',
-// 		success: function(data) {
-// 			patient = data.patient;
-// 			actuallyDisplayQuestions(item, patient);
-// 		}
-// 	});
-// }
 
 //this is being done as a function, since "patient" is presented in different forms in different
 //areas that the function gets called

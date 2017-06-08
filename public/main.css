@@ -2,6 +2,7 @@
 body {
 	font-family: 'Nunito', sans-serif;
 	font-size: 16px;
+	min-height: 0;
 }
 
 a, a:hover, a:focus {
@@ -63,6 +64,11 @@ h2 {
 	margin-top: 0;
 }
 
+.mdl-card__supporting-text {
+	margin-left: auto;
+	margin-right: auto;
+}
+
 img {
 	width: 100%;
 	height: auto;
@@ -98,6 +104,8 @@ footer {
 	margin-bottom: -50px;
 	background-color: #7f8b86;
 	color: white;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 footer ul {

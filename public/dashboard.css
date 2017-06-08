@@ -55,13 +55,13 @@ select {
 }
 
 .edit {
-	margin-bottom: 25px;
 	vertical-align: bottom;
-	margin-top: 15px;
+	margin: 15px auto 25px auto;
 }
 
 button.edit {
 	font-size: 0.85em;
+	display: block;
 }
 
 
@@ -87,5 +87,8 @@ button.edit {
 @media only screen and (min-width: 640px) {
 	.content {
 		height: 100%;
+	}
+	div.questions {
+		float: right;
 	}
 }
