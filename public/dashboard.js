@@ -1,9 +1,10 @@
-//new stuff per Derek and E.J.'s suggestions
+//creates accordion with data from hospitalizations GET request
 function displayHospitalizationData(data) {
 	var hDisplay = '';
 	var id;
 	data.hospitalizations.forEach(function(item) {
 		id = item.id;
+		//turns boolean from item.conscious into yes/no string
 		var conscious = checkIfConscious(item);
 		hDisplay += (
 			`<h3 class="js-accordion__header">${item.patient}</h3>
@@ -29,19 +30,24 @@ function displayHospitalizationData(data) {
 					${createSubmitButton(item.patient)}
 				</form>
 				</div>`);
+	//grabs the questions related to each hospitalization and adds it to the accordion
 	getQuestionsByHId(item.id, actuallyDisplayQuestions);
 	});
+	//adds accordion on initial page load
 	if ($('.h-container').is(':empty')) {
 		$('.h-container').html(hDisplay);
 		$('#accordion').accordion({collapsible: true, active: 'none', heightStyle: 'content'});
 	}
+	//refreshes accordion if page if one is already there
 	else {
-		$('.h-container').append(hDisplay)
+		$('.h-container').append(hDisplay);
 		$('.h-container').accordion('refresh');
 	}
 }
 
 function addSelected(c, bool) {
+	//this adds the "selected" attribute to the correct option
+	//under conscious
 	var selected = 'selected';
 	if (c === bool) {
 		return selected;
@@ -52,14 +58,13 @@ function checkIfConscious(item) {
 	var conscious;
 	if (item.conscious) {
 		conscious = 'yes';
-	}
-	else {
+	} else {
 		conscious = 'no';
 	}
 	return conscious;
 }
 
-//function broken into two parts because reasons
+//HTML template once GET request has been made to questions
 function actuallyDisplayQuestions(item) {
 	//template to update DOM
 	var questionsHtml = '';
@@ -75,22 +80,21 @@ function actuallyDisplayQuestions(item) {
 					</ul>
 				<input type="text" for="question" id="question" placeholder="update answer">`;
 			});
-			//change answer button to font awesome icon
-			//answer can be text input
 		//updates DOM
 		var HId = item.questions[0]._hospitalization;
 		$(`.js-${HId}`).html(questionsHtml);
 	}
 }
 
-function getHByIdNew(id) {
-	var patient;
-	$.ajax({
-		url: `/hospitalizations/${id}`,
-		type: 'GET',
-		success: callback
-	});
-}
+//not sure if this is needed anymore
+// function getHByIdNew(id) {
+// 	var patient;
+// 	$.ajax({
+// 		url: `/hospitalizations/${id}`,
+// 		type: 'GET',
+// 		success: callback
+// 	});
+// }
 
 //GET questions
 function getQuestionsByHId(HId, callback) {
@@ -112,20 +116,18 @@ function getHospitalizations(callback) {
 	$.ajax(query);
 }
 
-function getHById(item) {
-	var patient;
-	$.ajax({
-		url: `/hospitalizations/${item.hospitalizationId}`,
-		type: 'GET',
-		success: function(data) {
-			patient = data.patient;
-			actuallyDisplayQuestions(item, patient);
-		}
-	});
-}
-
-//the text input for editing a status
-var editInputTemplate = '<td><input type="text" name="edit"><button type="submit" class="change-status">Submit</button></td>';
+//not sure if this is needed
+// function getHById(item) {
+// 	var patient;
+// 	$.ajax({
+// 		url: `/hospitalizations/${item.hospitalizationId}`,
+// 		type: 'GET',
+// 		success: function(data) {
+// 			patient = data.patient;
+// 			actuallyDisplayQuestions(item, patient);
+// 		}
+// 	});
+// }
 
 //this is being done as a function, since "patient" is presented in different forms in different
 //areas that the function gets called
@@ -134,7 +136,7 @@ function createSubmitButton(patient) {
 }
 
 //pushes the new data to the hospitalization collection
-//then adds that document to the hospitalization table
+//then adds that document to the hospitalization accordion
 function listenForHospitalization() {
 	$('form').submit(function(e) {
 		e.preventDefault();
@@ -147,8 +149,7 @@ function listenForHospitalization() {
 		};
 		if ($('input[name="conscious"]:checked').val() === 'yes') {
 			newEntry.conscious = true;
-		}
-		else {
+		} else {
 			newEntry.conscious = false;
 		}
 
@@ -171,39 +172,48 @@ function listenForHospitalization() {
 	});
 }
 
+//makes objects for PUT requests
 function whenSubmitButtonIsClicked() {
 	$('.h-container').on('click', '.edit', function(e) {
 		e.preventDefault();
+		var conscious;
+		var consciousField;
 		var form = $(this).parents('form');
 		var objectForHospitalizations = {
 			id: form.parents('div').attr('data-id'),
-			latestUpdate: form.children('input#status').val(),
+			latestUpdate: form.children('.js-hospitalizations').find('input#status').val(),
+			conscious: undefined
 		};
-		var consciousField = form.children('select[name=conscious]').val();
-		var conscious = form.children('.conscious').text();
+		consciousField = form.children('.js-hospitalizations').find('select[name=conscious]').val();
+		conscious = form.children('.js-hospitalizations').find('.conscious').text();
+		//only adds conscious to object if user changed answer
 		if (consciousField !== conscious) {
 			consciousField = (consciousField === 'yes') ? true : false;
 			objectForHospitalizations.conscious = consciousField;
 		}
 		var objectForQuestions = {
-			id: $(this).siblings('ol').children('label').attr('data-id'),
-			answer: form.children('ol').find('input[for=question]').val()
+			id: $(this).siblings('.questions').children('ol').children('label').attr('data-id'),
+			answer: form.children('.questions').children('ol').find('input[for=question]').val()
 		};
+		console.log(objectForQuestions);
 		updateHospitalization(objectForHospitalizations);
 		updateQuestion(objectForQuestions);
 		
 	});
 }
 
+//PUT request for Questions
 function updateQuestion(object) {
 	var toUpdate = {};
 	for (var item in object) {
-		if (object[item] !== null && object[item] !== '') {
+		if (object[item] !== undefined && object[item] !== '') {
 			toUpdate[item] = object[item];
 		}
 	}
-	if (Object.keys(toUpdate).length !== 1) {
+	if (Object.keys(toUpdate).length > 1) {
+		//updates DOM with new answer prior
 		$(`.js-${object.id}`).find('#answer').text(object.answer);
+
 		$('#question').val('');
 		$.ajax({
 			url: `questions/${toUpdate.id}`,
@@ -218,12 +228,14 @@ function updateQuestion(object) {
 function updateHospitalization(object) {
 	var toUpdate = {};
 	for (var item in object) {
-		if (object[item] !== null && object[item] !== '') {
+		if (object[item] !== undefined && object[item] !== '') {
 			toUpdate[item] = object[item];
 		}
 	}
-	if (Object.keys(toUpdate).length !== 1) {
+	if (Object.keys(toUpdate).length > 1) {
+		//updates DOM with new data
 		hUpdateDom(toUpdate);
+
 		$.ajax({
 			url: `hospitalizations/${toUpdate.id}`,
 			method: 'PUT',
@@ -234,6 +246,7 @@ function updateHospitalization(object) {
 	}
 }
 
+//only run if a PUT request is being made
 function hUpdateDom(object) {
 	var target = $(`#${object.id}`).children('form');
 	if (object.latestUpdate) {

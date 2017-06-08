@@ -1,0 +1,81 @@
+.landing {
+	margin-top: 50px;
+	background: linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3)
+    ),
+    url("img/surgery-landing.jpeg");
+	background-size: cover;
+	height: 600px;
+	color: white;
+	text-align: center;
+}
+
+.landing a, .landing a:hover, .landing a:focus {
+	color: white;
+}
+
+.features h2 {
+	margin-bottom: 0;
+}
+
+.features .mdl-card {
+	max-width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: inline-block;
+	height: 380px;
+}
+
+.features .mdl-card h3 {
+	height: 100px;
+}
+
+.post > .mdl-card__title {
+	background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+    	),
+		url("img/loop.jpg");
+	background-size: cover;
+	color: white;
+
+}
+
+.status > .mdl-card__title {
+	background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+    	),
+		url("img/updates.jpg");
+	background-size: cover;
+	color: white;
+}
+
+.questions > .mdl-card__title {
+	background: linear-gradient(
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.3)
+    	),
+		url("img/questions.jpeg");
+	background-size: cover;
+	color: white;
+}
+
+.cta p {
+	width: 100%;
+	text-align: center;
+}
+
+.cta a {
+	text-align: center;
+	padding: 10px;
+	display: inline-block;
+
+}
+
+@media only screen and (min-width: 640px) {
+	.landing {
+		height: 800px;
+	}
+}

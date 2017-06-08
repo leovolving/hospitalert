@@ -1,0 +1,66 @@
+.dashboard {
+	margin-top: 70px;
+}
+
+.dashboard-wide {
+	width: 80%;
+}
+
+.hospitalizations h2 {
+	margin-bottom: 0;
+}
+
+.h-container {
+	text-align: left;
+}
+
+.ui-state-active {
+	background-color: #00b1bd;
+}
+
+.content {
+	height: 300px;
+}
+
+div.js-hospitalizations, div .questions{
+	display: inline-block;
+	vertical-align: top;
+}
+
+input[type=text], input[type=email], textarea {
+	background-color: inherit;
+	border: none;
+	border-bottom: 2px solid black
+}
+
+.edit {
+	margin-bottom: 25px;
+	vertical-align: bottom;
+	margin-top: 15px;
+}
+
+
+.new-hospitalization, .ask-questions {
+	margin-bottom: 50px;
+}
+
+.visuallyhidden { 
+	border: 0; 
+	clip: rect(0 0 0 0); 
+	height: 1px; 
+	margin: -1px; 
+	overflow: hidden; 
+	padding: 0; 
+	position: absolute; 
+	width: 1px; 
+}
+
+.conscious {
+	display: none;
+}
+
+@media only screen and (min-width: 640px) {
+	.content {
+		height: 100%;
+	}
+}

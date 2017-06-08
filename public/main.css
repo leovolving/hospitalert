@@ -1,7 +1,6 @@
 
 body {
 	font-family: 'Nunito', sans-serif;
-	/*background-color: #63BACC;*/
 	font-size: 16px;
 }
 
@@ -27,20 +26,7 @@ nav {
 }
 
 nav a {
-	color: #00b1bd;
-}
-
-.landing {
-	margin-top: 50px;
-	background: linear-gradient(
-      rgba(0, 0, 0, 0.3),
-      rgba(0, 0, 0, 0.3)
-    ),
-    url("img/surgery-landing.jpeg");
-	background-size: cover;
-	height: 600px;
-	color: white;
-	text-align: center;
+	color: #7f8b86;
 }
 
 .navbar-brand {
@@ -48,8 +34,8 @@ nav a {
 	font-family: 'Monoton', cursive;
 }
 
-.landing a, .landing a:hover, .landing a:focus {
-	color: white;
+.navbar-default .navbar-brand {
+	color: #7f8b86;
 }
 
 h2 {
@@ -65,54 +51,7 @@ h2 {
 	margin: 0 auto;
 }
 
-.features h2 {
-	margin-bottom: 0;
-}
-
-.features .mdl-card {
-	max-width: 100%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	display: inline-block;
-	height: 380px;
-}
-
-.features .mdl-card h3 {
-	height: 100px;
-}
-
-.post > .mdl-card__title {
-	background: linear-gradient(
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-    	),
-		url("img/loop.jpg");
-	background-size: cover;
-	color: white;
-
-}
-
-.status > .mdl-card__title {
-	background: linear-gradient(
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-    	),
-		url("img/updates.jpg");
-	background-size: cover;
-	color: white;
-}
-
-.questions > .mdl-card__title {
-	background: linear-gradient(
-        rgba(0, 0, 0, 0.3),
-        rgba(0, 0, 0, 0.3)
-    	),
-		url("img/questions.jpeg");
-	background-size: cover;
-	color: white;
-}
-
-.col-md-3, h2, .about, .cta a, footer, .dashboard h1 {
+.col-md-3, .about, .cta a, footer {
 	background-color: #f6f6f6;	
 	box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 6px, 
 		rgba(0, 0, 0, 0.12) 0px 1px 4px;
@@ -135,8 +74,6 @@ section {
 }
 
 .form-container {
-/*	max-width: 500px;
-	margin: 0 auto;*/
 	text-align: center;
 }
 
@@ -151,18 +88,6 @@ section {
 	bottom: 10px;
 }
 
-.cta p {
-	width: 100%;
-	text-align: center;
-}
-
-.cta a {
-	text-align: center;
-	padding: 10px;
-	display: inline-block;
-
-}
-
 footer li {
 	list-style-type: none;
 	display: inline;
@@ -171,7 +96,8 @@ footer li {
 footer {
 	min-height: 100%;
 	margin-bottom: -50px;
-	background-color: #f6f6f6;
+	background-color: #7f8b86;
+	color: white;
 }
 
 footer ul {
@@ -187,75 +113,12 @@ footer img {
 	height: 50px;
 }
 
-.dashboard {
-	margin-top: 70px;
-}
-
-.hospitalizations h2 {
-	margin-bottom: 0;
-}
-
-.h-container {
-	text-align: left;
-}
-
-.ui-state-active {
-	background-color: #00b1bd;
-}
-
-.content {
-	height: 300px;
-}
-
-div.js-hospitalizations, div .questions{
-	display: inline-block;
-	vertical-align: top;
-}
-
-input[type=text], input[type=email], textarea {
-	background-color: inherit;
-	border: none;
-	border-bottom: 2px solid black
-}
-
-.edit {
-	margin-bottom: 25px;
-	vertical-align: bottom;
-	margin-top: 15px;
-}
-
-
-.new-hospitalization, .ask-questions {
-	margin-bottom: 50px;
-}
-
-.visuallyhidden { 
-	border: 0; 
-	clip: rect(0 0 0 0); 
-	height: 1px; 
-	margin: -1px; 
-	overflow: hidden; 
-	padding: 0; 
-	position: absolute; 
-	width: 1px; 
-}
-
-.conscious {
-	display: none;
-}
-
 @media only screen and (min-width: 640px) {
-	.landing {
-		height: 800px;
-	}
 	.about-wide, .dashboard-wide {
 		width: 80%;
 	}
 	.col-md-3 {
 		margin-left: 60px;
-	}
-	.content {
-		height: 100%;
 	}
 	footer a {
 		margin-left: 30px;

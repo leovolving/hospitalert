@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
 		return res.status(400).send(message);
 	}
 	const changes = {};
-	const updatableFields = ['question', 'answer', '_hospitalization'];
+	const updatableFields = ['question', 'answer'];
 	updatableFields.forEach(field => {
 		if (field in req.body) {
 			changes[field] = req.body[field];
