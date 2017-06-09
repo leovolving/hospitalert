@@ -2,7 +2,6 @@
 body {
 	font-family: 'Nunito', sans-serif;
 	font-size: 16px;
-	min-height: 0;
 }
 
 a, a:hover, a:focus {
@@ -26,8 +25,8 @@ nav {
 	text-align: left;
 }
 
-nav a {
-	color: #7f8b86;
+.navbar-default .navbar-nav>li>a {
+	color: #f8f8f8;
 }
 
 .navbar-brand {
@@ -36,7 +35,7 @@ nav a {
 }
 
 .navbar-default .navbar-brand {
-	color: #7f8b86;
+	color: #f8f8f8;
 }
 
 h2 {
@@ -90,9 +89,14 @@ section {
 	font-size: 14px;
 }
 
+.text {
+	margin-bottom: 10px;
+	margin-top: 0;
+}
+
 .move {
 	position: relative;
-	bottom: 10px;
+	bottom: 0;
 }
 
 footer li {
@@ -101,8 +105,13 @@ footer li {
 }
 
 footer {
-	min-height: 100%;
-	margin-bottom: -50px;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	height: 50px;
+	width: 100%;
+	z-index: 100;
+	margin-bottom: 0;
 	background-color: #7f8b86;
 	color: white;
 	padding-top: 10px;
@@ -110,7 +119,7 @@ footer {
 }
 
 footer ul {
-	margin-bottom: -50px;
+	height: 100%;
 }
 
 footer a {
@@ -134,7 +143,6 @@ footer a {
 	.text {
 		width: 200px;
 		margin-top: 10px;
-		margin-bottom: 10px;
 	}
 	.move {
 		bottom: 0;
@@ -147,8 +155,6 @@ footer a {
 @media only screen and (min-width: 995px) {
 	.text {
 		width: 500px;
-		margin-top: 10px;
-		margin-bottom: 10px;
 	}
 	.move {
 	bottom: 15px;

@@ -74,6 +74,10 @@
 
 }
 
+.contact {
+	margin-bottom: 50px;
+}
+
 @media only screen and (min-width: 640px) {
 	.landing {
 		height: 800px;
