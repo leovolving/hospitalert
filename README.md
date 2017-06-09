@@ -65,7 +65,9 @@ Then open [`localhost:8080`](http://localhost:8080) in a browser.
     <li>/questions/:id</li>
   </ul>
   <li>POST requests</li>
-  <ul>/hospitalizations</ul>
+  <ul>
+    <li>/hospitalizations</li>
+  </ul>
 </ul>
 <h3>Responsive</h3>
 <ul>
