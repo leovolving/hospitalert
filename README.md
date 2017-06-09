@@ -50,6 +50,23 @@ Then open [`localhost:8080`](http://localhost:8080) in a browser.
 	<li><a href="http://getbootstrap.com/getting-started/">Bootstrap</a></li>
 	<li><a href="http://fontawesome.io/">Font Awesome</a></li>
 </ul>
+<h3>API Routes</h3>
+<ul>
+  <li>GET requests</li>
+  <ul>
+    <li>/hospitalizations</li>
+    <li>/hospitalizations/:id</li>
+    <li>/questions</li>
+    <li>/questions/:_hospitalizations</li>
+  </ul>
+  <li>PUT requests</li>
+  <ul>
+    <li>/hospitalizations/:id</li>
+    <li>/questions/:id</li>
+  </ul>
+  <li>POST requests</li>
+  <ul>/hospitalizations</ul>
+</ul>
 <h3>Responsive</h3>
 <ul>
   <li>The app is fully responsive and quickly adapts to all mobile, tablet, and desktop viewports.</li>
