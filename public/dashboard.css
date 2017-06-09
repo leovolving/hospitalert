@@ -84,11 +84,18 @@ button.edit {
 	display: none;
 }
 
+button.new-entry {
+	margin-top: 10px;
+}
+
+@media only screen and (min-width: 670px) {
+	div.questions {
+		float: right;
+	}
+}
+
 @media only screen and (min-width: 640px) {
 	.content {
 		height: 100%;
-	}
-	div.questions {
-		float: right;
 	}
 }

@@ -64,16 +64,18 @@
 	<section class="new-hospitalization" id="create-new">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
-					<h2>New Hospitalization</h2>
-					<div class="form-container">
+				<div class="col-md-12 post-request mdl-card mdl-shadow--6dp">
+					<div class="mdl-card__title mdl-card--expand">
+						<h2>New Hospitalization</h2>
+					</div>
+					<div class="form-container mdl-card__supporting-text">
 						<form class="create text-center">
 							<label class=" text-right" for="patient">Patient:</label>
-							<input class=" text-left" type="text" name="patient" placeholder="ex. Mom, Steve"><br>
+							<input class="text text-left" type="text" name="patient" placeholder="ex. Mom, Steve"><br>
 							<label class=" text-right" for="condition">Condition:</label>
-							<input class=" text-left" type="text" name="condition" placeholder="ex. broken bone"><br>
+							<input class="text text-left" type="text" name="condition" placeholder="ex. broken bone"><br>
 							<label class="move" for="status">Status:</label>
-							<textarea type="text" name="status" placeholder="ex. Waiting on test results"></textarea><br>
+							<textarea class="text" type="text" name="status" placeholder="ex. Waiting on test results"></textarea><br>
 							<input type="checkbox" name="conscious">
 							<label for="conscious">Conscious?</label><br>
 							<button type="submit" class="new-entry mdl-button mdl-js-button mdl-button--raised">Submit</button>

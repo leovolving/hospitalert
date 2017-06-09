@@ -42,13 +42,14 @@ nav a {
 h2 {
 	text-align: center;
 }
-.about-wide, .contact-card, .dashboard-wide {
+.about-wide, .contact-card, .dashboard-wide, .post-request {
 	max-width: 100%;
 	margin: 0 auto 20px auto;
 	text-align: center;
 }
 
-.about-wide h2, .contact-card h2, .dashboard-wide h1 {
+.about-wide h2, .contact-card h2, 
+.dashboard-wide h1, .post-request h2 {
 	margin: 0 auto;
 }
 
@@ -104,8 +105,8 @@ footer {
 	margin-bottom: -50px;
 	background-color: #7f8b86;
 	color: white;
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 footer ul {
@@ -121,6 +122,8 @@ footer a {
 	height: 50px;
 }
 
+
+
 @media only screen and (min-width: 640px) {
 	.about-wide, .dashboard-wide {
 		width: 80%;
@@ -128,7 +131,26 @@ footer a {
 	.col-md-3 {
 		margin-left: 60px;
 	}
+	.text {
+		width: 200px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.move {
+		bottom: 0;
+	}
 	footer a {
 		margin-left: 20px;
+	}
+}
+
+@media only screen and (min-width: 995px) {
+	.text {
+		width: 500px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+	.move {
+	bottom: 15px;
 	}
 }
