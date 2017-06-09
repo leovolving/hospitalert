@@ -77,15 +77,15 @@ router.post('/', jsonParser, (req, res) => {
 
 //using this to delete test items in my local environment via Postman
 //deleting is not a client-side feature as of right now
-router.delete('/:id', (req, res) => {
-	Hospitalization.findByIdAndRemove(req.params.id)
-	.then(hosp => {
-		res.status(201).send('done');
-	})
-	.catch(err => {
-		console.error(err);
-		res.status(500).send('oops');
-	});
-});
+// router.delete('/:id', (req, res) => {
+// 	Hospitalization.findByIdAndRemove(req.params.id)
+// 	.then(hosp => {
+// 		res.status(201).send('done');
+// 	})
+// 	.catch(err => {
+// 		console.error(err);
+// 		res.status(500).send('oops');
+// 	});
+// });
 
 module.exports = router;
