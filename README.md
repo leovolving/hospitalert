@@ -55,7 +55,7 @@ Then open [`localhost:8080`](http://localhost:8080) in a browser.
   <li>The app is fully responsive and quickly adapts to all mobile, tablet, and desktop viewports.</li>
 </ul>
 
-<h2>This is V1</h2>
+<h2>Current Release: V1</h2>
 <p>V1 is a demo. V2 is coming soon and will introduce:</p>
 <ul>
 	<li>User accounts</li>

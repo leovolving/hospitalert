@@ -6,10 +6,6 @@
 	width: 80%;
 }
 
-.hospitalizations h2 {
-	margin-bottom: 0;
-}
-
 .h-container {
 	text-align: left;
 }
@@ -82,6 +78,10 @@ button.edit {
 
 .conscious {
 	display: none;
+}
+
+#post-condition {
+	padding-right: 2px;
 }
 
 button.new-entry {

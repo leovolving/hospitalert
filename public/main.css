@@ -94,9 +94,13 @@ section {
 	margin-top: 0;
 }
 
+.text::placeholder {
+	font-size: 12px;
+}
+
 .move {
 	position: relative;
-	bottom: 0;
+	bottom: 15px;
 }
 
 footer li {
@@ -126,11 +130,6 @@ footer a {
 	color: white;
 	margin-left: 10px;
 }
-
-.push {
-	height: 50px;
-}
-
 
 
 @media only screen and (min-width: 640px) {
