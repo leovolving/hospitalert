@@ -75,7 +75,7 @@ Then open [`localhost:8080`](http://localhost:8080) in a browser.
 </ul>
 
 <h2>Current Release: V1</h2>
-<p>V1 is a demo. V2 is coming soon and will introduce:</p>
+<p>V1 is a demo. V2 is [live now](https://github.com/Ljyockey/hospitalert-client) and introduces:</p>
 <ul>
 	<li>User accounts</li>
 	<li>The ability to login through Facebook</li>
